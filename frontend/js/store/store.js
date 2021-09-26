@@ -50,10 +50,7 @@ export default class Store {
       return false;
     }
 
-    const newState = func(self.state, payload);
-    if (newState) {
-      self.state = Object.assign(self.state, newState);
-    }
+    func(self.state, payload);
 
     return true;
   }
