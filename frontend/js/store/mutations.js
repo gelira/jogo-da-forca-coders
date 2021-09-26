@@ -32,5 +32,21 @@ export default {
     state.dica = dica;
     state.palavra_masked = palavra_masked;
     state.letras_restantes = letras_restantes;
-  }
+  },
+
+  [MUTATIONS.ERRO_TENTATIVA] (state) {
+    state.vidas = state.vidas - 1;
+  },
+
+  [MUTATIONS.ACERTO_TENTATIVA] (state, payload) {
+    const { letra } = payload;
+
+    state.palavra_masked = state.palavra_masked.map(item => {
+      if (item.letra_cleaned === letra) {
+        item.masked = false;
+      }
+      return item;
+    });
+    state.letras_restantes = state.letras_restantes - 1;
+  },
 };
