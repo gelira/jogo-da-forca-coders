@@ -21,7 +21,7 @@ export default class Store {
       set: function (state, key, value) {
         state[key] = value;
         self.events.publish('stateChange', state);
-        
+
         return true;
       }
     });
@@ -51,7 +51,9 @@ export default class Store {
     }
 
     const newState = func(self.state, payload);
-    self.state = { ...self.state, ...newState };
+    if (newState) {
+      self.state = Object.assign(self.state, newState);
+    }
 
     return true;
   }
