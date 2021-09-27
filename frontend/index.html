@@ -5,13 +5,26 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jogo da Forca</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <main>
-    <p id="dica"></p>
-    <p id="palavra"></p>
+    <div>
+      <p>Dica: <span id="dica"></span></p>
+      <div id="palavra-masked"></div>
+      <p id="letras-restantes"></p>
+    </div>
+    <div id="tentativas-container">
+      <div id="vidas"></div>
+      <label for="letra-tentativa">Digite uma letra (sem acento):</label>
+      <input type="text" id="letra-tentativa" maxlength="1">
+      <button id="btn-tentar">Tentar</button>
+    </div>
+    <div>
+      <p id="resultado"></p>
+      <button id="novo-jogo">Novo Jogo</button>
+    </div>
   </main>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="main.js"></script>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
