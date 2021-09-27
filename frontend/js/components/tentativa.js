@@ -22,7 +22,7 @@ export default class Tentativa extends Component {
 
     const letra = this.elementLetraTentativa.value.trim().toUpperCase();
     
-    if ('ABCDEFGHIJKLMNOPQRSTUVWXYZ'.includes(letra)) {
+    if (letra.length === 1 && 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.includes(letra)) {
       this.store.dispatch(ACTIONS.TENTATIVA, { letra });
     } 
 
