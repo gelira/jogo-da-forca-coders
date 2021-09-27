@@ -42,12 +42,14 @@ export default {
   [MUTATIONS.ACERTO_TENTATIVA] (state, payload) {
     const { letra } = payload;
 
+    const lr = state.letras_restantes;
     state.palavra_masked = state.palavra_masked.map(item => {
       if (item.letra_cleaned === letra) {
+        lr --;
         item.masked = false;
       }
       return item;
     });
-    state.letras_restantes = state.letras_restantes - 1;
+    state.letras_restantes = lr;
   },
 };
