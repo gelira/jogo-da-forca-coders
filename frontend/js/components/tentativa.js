@@ -28,17 +28,38 @@ export default class Tentativa extends Component {
   }
 
   render() {
-    const { vidas } = this.store.state;
+    const self = this;
 
-    this.elementVidas.innerHTML = '';
+    const { vidas, palavra } = self.store.state;
 
-    for (let i = 0; i < vidas; i ++) {
-      const img = document.createElement('img');
-      
-      img.setAttribute('src', 'img/vida.png');
-      img.classList.add('vida');
+    self.elementVidas.innerHTML = '';
 
-      this.elementVidas.appendChild(img);
+    if (vidas > 0) {
+      for (let i = 0; i < vidas; i ++) {
+        const img = document.createElement('img');
+        
+        img.setAttribute('src', 'img/vida.png');
+        img.classList.add('vida');
+  
+        self.elementVidas.appendChild(img);
+      }
+    }
+    else {
+      const div = document.createElement('div');
+
+      const p = document.createElement('p');
+      p.innerHTML = `Você perdeu! A palavra era ${palavra}`;
+
+      const btn = document.createElement('button');
+      btn.setAttribute('id', 'novoJogo');
+      btn.innerHTML = 'Novo jogo';
+
+      div.appendChild(p);
+      div.appendChild(btn);
+
+      self.elementVidas.appendChild(div);
+
+      document.getElementById('novoJogo').addEventListener('click', () => self.store.dispatch(ACTIONS.FETCH_PALAVRA));
     }
   }
 }
