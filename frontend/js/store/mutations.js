@@ -28,6 +28,7 @@ export default {
       });
     }
 
+    state.vidas = 3;
     state.palavra = palavra;
     state.dica = dica;
     state.palavra_masked = palavra_masked;
