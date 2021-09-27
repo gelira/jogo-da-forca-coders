@@ -42,7 +42,7 @@ export default {
   [MUTATIONS.ACERTO_TENTATIVA] (state, payload) {
     const { letra } = payload;
 
-    const lr = state.letras_restantes;
+    let lr = state.letras_restantes;
     state.palavra_masked = state.palavra_masked.map(item => {
       if (item.letra_cleaned === letra) {
         lr --;
