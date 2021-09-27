@@ -8,58 +8,69 @@ export default class Tentativa extends Component {
     const self = this;
 
     self.elementVidas = document.getElementById('vidas');
-    self.elementTentativaLetra = document.getElementById('tentativaLetra');
+    self.elementLetraTentativa = document.getElementById('letra-tentativa');
+    self.elementContainer = document.getElementById('tentativas-container');
 
-    document.getElementById('btnTentar').addEventListener('click', () => self.tentar());
+    document.getElementById('btn-tentar').addEventListener('click', () => self.tentar());
   }
 
   tentar() {
-    if (this.store.state.vidas <= 0) {
+    const { vidas, letras_restantes } = this.store.state;
+    if (vidas <= 0 || letras_restantes <= 0) {
       return;
     }
 
-    const letra = this.elementTentativaLetra.value.trim().toUpperCase();
+    const letra = this.elementLetraTentativa.value.trim().toUpperCase();
     
     if ('ABCDEFGHIJKLMNOPQRSTUVWXYZ'.includes(letra)) {
       this.store.dispatch(ACTIONS.TENTATIVA, { letra });
     } 
 
-    this.elementTentativaLetra.value = '';
+    this.elementLetraTentativa.value = '';
   }
 
-  render() {
-    const self = this;
+  showContainer() {
+    this.elementContainer.classList.remove('hidden');
+  }
 
-    const { vidas, palavra } = self.store.state;
+  hideContainer() {
+    this.elementContainer.classList.add('hidden');
+  }
 
-    self.elementVidas.innerHTML = '';
+  renderVidas() {
+    const { vidas } = this.store.state;
+
+    this.elementVidas.innerHTML = '';
 
     if (vidas > 0) {
       for (let i = 0; i < vidas; i ++) {
         const img = document.createElement('img');
         
         img.setAttribute('src', 'img/vida.png');
-        img.classList.add('vida');
+        img.classList.add('vida-item');
   
-        self.elementVidas.appendChild(img);
+        this.elementVidas.appendChild(img);
       }
+      return;
     }
-    else {
-      const div = document.createElement('div');
 
-      const p = document.createElement('p');
-      p.innerHTML = `Você perdeu! A palavra era ${palavra}`;
+    const img = document.createElement('img');
+      
+    img.setAttribute('src', 'img/game-over.png');
+    img.classList.add('game-over-item');
 
-      const btn = document.createElement('button');
-      btn.setAttribute('id', 'novoJogo');
-      btn.innerHTML = 'Novo jogo';
+    this.elementVidas.appendChild(img);
+  }
 
-      div.appendChild(p);
-      div.appendChild(btn);
+  render() {
+    const { letras_restantes } = this.store.state;
 
-      self.elementVidas.appendChild(div);
-
-      document.getElementById('novoJogo').addEventListener('click', () => self.store.dispatch(ACTIONS.FETCH_PALAVRA));
+    if (letras_restantes <= 0) {
+      this.hideContainer();
+      return;
     }
+
+    this.showContainer();
+    this.renderVidas();
   }
 }
