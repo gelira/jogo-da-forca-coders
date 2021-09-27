@@ -44,7 +44,7 @@ export default {
 
     let lr = state.letras_restantes;
     state.palavra_masked = state.palavra_masked.map(item => {
-      if (item.letra_cleaned === letra) {
+      if (item.letra_cleaned === letra && item.masked) {
         lr --;
         item.masked = false;
       }
