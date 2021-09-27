@@ -9,6 +9,6 @@ export default class Component {
     }
 
     self.store = store;
-    props.store.events.subscribe('stateChange', () => self.render());
+    store.events.subscribe('stateChange', () => self.render());
   }
 }
