@@ -1,0 +1,27 @@
+#palavra-masked, #vidas {
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}
+
+.letra {
+  border: 2px solid black;
+  font-size: 20px;
+  padding: 10px;
+  margin-left: 10px;
+}
+
+.vida-item {
+  width: 50px;
+  margin-left: 10px;
+}
+
+.game-over-item { 
+  width: 100px;
+}
+
+main > div {
+  margin-bottom: 20px;
+}
