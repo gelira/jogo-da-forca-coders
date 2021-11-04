@@ -13,3 +13,25 @@ window.addEventListener('load', () => {
   tentativa.render();
   resultado.render();
 });
+
+
+function iniciaModal(modalID) {
+  
+      const modal = document.getElementById(modalID);
+      if(modal) {
+          modal.classList.add('mostrar');
+          modal.addEventListener('click', (e) => {
+              if(e.target.id == modalID || e.target.className == 'fechar') {
+                  modal.classList.remove('mostrar');
+                  
+              }
+          });
+      }
+  }
+
+ iniciaModal('modal-result');
+
+
+
+//const logo = document.querySelector('.logo');
+  //  logo.addEventListener('click', () => iniciaModal('modal-result'));
