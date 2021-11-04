@@ -1,11 +1,18 @@
 import { ACTIONS, MUTATIONS } from './types.js';
 
-export default {
-  [ACTIONS.FETCH_PALAVRA] (context) {
-    fetch('http://localhost:3000/palavra')
-      .then(response => response.json())
-      .then(data => context.commit(MUTATIONS.SET_PALAVRA, data));
-  },
+easync [ACTIONS.FETCH_PALAVRA] (context) {
+
+  let result = await fetch('http://localhost:3000/palavra');
+
+  let data = await result.json();
+
+  //fetch('http://localhost:3000/palavra')
+   // .then(response => response.json())
+   // .then(data => context.commit(MUTATIONS.SET_PALAVRA, data));
+
+   context.commit(MUTATIONS.SET_PALAVRA, data);
+
+},
 
   [ACTIONS.TENTATIVA] (context, payload) {
     const { letra } = payload;
