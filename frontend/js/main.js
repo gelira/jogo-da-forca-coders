@@ -1,13 +1,13 @@
 import Palavra from './components/palavra.js';
 import Resultado from './components/resultado.js';
 import Tentativa from './components/tentativa.js'
-import Tentativa from './components/Ranking.js'
+import Ranking from './components/Ranking.js'
 
 window.addEventListener('load', () => {
   const palavra = new Palavra();
   const tentativa = new Tentativa();
   const resultado = new Resultado();
-  const ranking = new Resultado();
+  const ranking = new Ranking();
 
   resultado.novoJogo();
 
