@@ -5,4 +5,7 @@ export default {
 
   palavra_masked: [],
   letras_restantes: -1,
+  nome: '',
+  tempo: 0,
+  ranking: [],
 };
