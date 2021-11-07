@@ -31,8 +31,6 @@ export default class Ranking extends Component {
       return;
     }
 
-    console.log(this.store.state.ranking);
-
     let table = document.createElement("table");
     let tableBody = document.createElement("tbody");
     let tableHead = document.createElement("thead");
@@ -51,14 +49,16 @@ export default class Ranking extends Component {
       tableHead.appendChild(tr);
 
       for (let i=0; i<this.store.state.ranking.length; i++) {
+        let dados = JSON.parse(this.store.state.ranking[i]);
+
         let tr = document.createElement("tr");
 
         let td1 = document.createElement("td");
-        td1.appendChild(document.createTextNode(`${this.store.state.ranking[i].nome}`));
+        td1.appendChild(document.createTextNode(`${dados.nome}`));
         tr.appendChild(td1);
 
         let td2 = document.createElement("td");
-        td2.appendChild(document.createTextNode(`${this.store.state.ranking[i].tempo}`));
+        td2.appendChild(document.createTextNode(`${dados.tempo}`));
         tr.appendChild(td2);
 
         tableBody.appendChild(tr);
