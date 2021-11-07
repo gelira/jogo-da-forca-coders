@@ -1,6 +1,6 @@
 import { ACTIONS, MUTATIONS } from './types.js';
 
-easync [ACTIONS.FETCH_PALAVRA] (context) {
+export default { async [ACTIONS.FETCH_PALAVRA] (context) {
 
   let result = await fetch('http://localhost:3000/palavra');
 
