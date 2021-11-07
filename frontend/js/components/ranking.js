@@ -6,8 +6,8 @@ export default class Ranking extends Component {
     
     const self = this;
 
-    self.elementTempo = document.getElementById('tempo');
-    self.elementNome = document.getElementById('nome');
+    this.store.state.ranking = (localStorage.getItem('ranking') === null)? [] : JSON.parse(localStorage.getItem('ranking')) ;
+
     self.elementContainer = document.getElementById('ranking-container');
     self.elementBtnRankingShow = document.getElementById('ranking-btn');
 
@@ -16,6 +16,7 @@ export default class Ranking extends Component {
 
   register(nome, tempo) {
     this.store.state.ranking.push(`{"nome":"${nome}", "tempo":"${tempo}"}`);
+    localStorage.setItem('ranking', JSON.stringify(this.store.state.ranking));
 
     this.store.state.ranking.sort( (a, b) => {
         return (a.tempo > b.tempo)? 1 : ((b.tempo > a.tempo)? -1 : 0);
@@ -30,12 +31,11 @@ export default class Ranking extends Component {
       return;
     }
 
+    console.log(this.store.state.ranking);
+
     let table = document.createElement("table");
     let tableBody = document.createElement("tbody");
     let tableHead = document.createElement("thead");
-
-    console.log(this.store.state.ranking[0]);
-    console.log(this.store.state.ranking.length);
 
     if( this.store.state.ranking.length > 0 ) {
       let tr = document.createElement("tr");

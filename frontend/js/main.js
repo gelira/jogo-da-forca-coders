@@ -32,7 +32,7 @@ function iniciaModal(modalID) {
       }
   }
 
- iniciaModal('modal-result');
+//iniciaModal('modal-result');
 
 
 
