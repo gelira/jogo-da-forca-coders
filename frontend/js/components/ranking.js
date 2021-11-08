@@ -19,7 +19,9 @@ export default class Ranking extends Component {
     localStorage.setItem('ranking', JSON.stringify(this.store.state.ranking));
 
     this.store.state.ranking.sort( (a, b) => {
-        return (a.tempo > b.tempo)? 1 : ((b.tempo > a.tempo)? -1 : 0);
+        let aa = JSON.parse(a);
+        let bb = JSON.parse(b);
+        return (aa.tempo > bb.tempo)? 1 : ((bb.tempo > aa.tempo)? -1 : 0);
     });
   }
 
@@ -31,12 +33,22 @@ export default class Ranking extends Component {
       return;
     }
 
+    this.store.state.ranking.sort( (a, b) => {
+      let aa = JSON.parse(a);
+      let bb = JSON.parse(b);
+      return (aa.tempo > bb.tempo)? 1 : ((bb.tempo > aa.tempo)? -1 : 0);
+    });
+
     let table = document.createElement("table");
     let tableBody = document.createElement("tbody");
     let tableHead = document.createElement("thead");
 
     if( this.store.state.ranking.length > 0 ) {
       let tr = document.createElement("tr");
+
+      let th = document.createElement("th");
+      th.appendChild(document.createTextNode(`POSIÇÃO`));
+      tr.appendChild(th);
 
       let th1 = document.createElement("th");
       th1.appendChild(document.createTextNode(`NOME`));
@@ -53,12 +65,16 @@ export default class Ranking extends Component {
 
         let tr = document.createElement("tr");
 
+        let td = document.createElement("td");
+        td.appendChild(document.createTextNode(`${i+1}`));
+        tr.appendChild(td);
+
         let td1 = document.createElement("td");
         td1.appendChild(document.createTextNode(`${dados.nome}`));
         tr.appendChild(td1);
 
         let td2 = document.createElement("td");
-        td2.appendChild(document.createTextNode(`${dados.tempo}`));
+        td2.appendChild(document.createTextNode(`${dados.tempo}s`));
         tr.appendChild(td2);
 
         tableBody.appendChild(tr);

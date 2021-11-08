@@ -9,7 +9,7 @@ window.addEventListener('load', () => {
   const resultado = new Resultado();
   const ranking = new Ranking();
 
-  resultado.novoJogo();
+  //resultado.novoJogo();
 
   palavra.render();
   tentativa.render();
