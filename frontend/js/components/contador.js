@@ -1,8 +1,11 @@
 import Component from '../lib/component.js';
 
+import { ACTIONS } from '../store/types.js';
+
 export default class Contador extends Component {
   constructor() {
     super();
+    this.store.dispatch(ACTIONS.INICIAR_TEMPO);
     this.elementContador = document.querySelector('#contador');
   }
 

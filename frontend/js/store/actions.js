@@ -22,7 +22,7 @@ export default {
     context.commit(MUTATIONS.ERRO_TENTATIVA);
   },
 
-  [ACTIONS.INICIAR_TEMPO] (context, payload) {
+  [ACTIONS.INICIAR_TEMPO] (context, payload = {}) {
     const { tempo } = payload;
     
     if (tempo) {
