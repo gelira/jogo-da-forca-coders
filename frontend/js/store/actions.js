@@ -21,4 +21,23 @@ export default {
 
     context.commit(MUTATIONS.ERRO_TENTATIVA);
   },
+
+  [ACTIONS.INICIAR_TEMPO] (context, payload) {
+    const { tempo } = payload;
+    
+    if (tempo) {
+      context.commit(MUTATIONS.DEFINIR_TEMPO, { tempo });
+    } 
+
+    const tempo_interval = setInterval(() => {
+      context.commit(MUTATIONS.INCREMENTAR_TEMPO);
+    }, 1000);
+
+    context.commit(MUTATIONS.DEFINIR_TEMPO_INTERVAL, { tempo_interval });
+  },
+
+  [ACTIONS.PARAR_TEMPO] (context) {
+    const { tempo_interval } = context.state;
+    clearInterval(tempo_interval);
+  },
 };

@@ -52,4 +52,16 @@ export default {
     });
     state.letras_restantes = lr;
   },
+
+  [MUTATIONS.DEFINIR_TEMPO_INTERVAL] (state, payload) {
+    state.tempo_interval = payload.tempo_interval;
+  },
+
+  [MUTATIONS.DEFINIR_TEMPO] (state, payload) {
+    state.tempo = payload.tempo;
+  },
+
+  [MUTATIONS.INCREMENTAR_TEMPO] (state) {
+    state.tempo ++;
+  },
 };
