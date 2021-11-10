@@ -10,22 +10,43 @@ export default class Tentativa extends Component {
     self.elementVidas = document.getElementById('vidas');
     self.elementLetraTentativa = document.getElementById('letra-tentativa');
     self.elementContainer = document.getElementById('tentativas-container');
+    self.elementResultado = document.getElementById('resultado');
+    self.elementGame = document.getElementById('game');
 
-    document.getElementById('btn-tentar').addEventListener('click', () => self.tentar());
+    document.getElementById('btn-tentar').addEventListener('click', () => self.tentarPalavra());
+    
+    this.renderTeclado();
   }
 
-  tentar() {
+  tentar(button) {
     const { vidas, letras_restantes } = this.store.state;
     if (vidas <= 0 || letras_restantes <= 0) {
       return;
     }
 
-    const letra = this.elementLetraTentativa.value.trim().toUpperCase();
+    const letra = button.innerHTML.trim().toUpperCase();
     
     if (letra.length === 1 && 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.includes(letra)) {
-      this.store.dispatch(ACTIONS.TENTATIVA, { letra });
+      if(this.store.dispatch(ACTIONS.TENTATIVA, { letra })) {
+        document.getElementById(button.id).setAttribute("style", "background-color: #56ff56;");
+        document.getElementById(button.id).setAttribute("disabled", "disabled");
+      } else {
+        document.getElementById(button.id).setAttribute("style", "background-color: #ff8a8a");
+        document.getElementById(button.id).setAttribute("disabled", "disabled");
+      }
+        
     } 
 
+    this.elementLetraTentativa.value = '';
+  }
+
+  tentarPalavra() {
+    const { vidas, letras_restantes } = this.store.state;
+    if (vidas <= 0 || letras_restantes <= 0) {
+      return;
+    }
+    const palavra = this.elementLetraTentativa.value.trim().toUpperCase();
+    this.store.dispatch(ACTIONS.TENTATIVATOTAL, { palavra });
     this.elementLetraTentativa.value = '';
   }
 
@@ -54,12 +75,29 @@ export default class Tentativa extends Component {
       return;
     }
 
-    const img = document.createElement('img');
-      
-    img.setAttribute('src', 'img/game-over.png');
-    img.classList.add('game-over-item');
+    this.elementGame.classList.add('hidden');
+  }
 
-    this.elementVidas.appendChild(img);
+  renderTeclado(){
+    let teclado = "<table cellpadding=3 cellspacing=6 width=390 height=90> <tr>";
+    let linha = 0;
+    for(let i=65; i<91; i++) {
+        if(linha == 8) {
+            linha = 0;
+            teclado += "</tr><tr>";
+        }
+        teclado += "<td align=center valign=middle width=15> ";
+        teclado += `<button type=button id="letter`+ String.fromCharCode(i) +`" class="btn-teclado">`+ String.fromCharCode(i) +`</button></td>`;
+        linha++;
+    }
+    teclado += "</tr></table>";
+    document.getElementById('teclado').insertAdjacentHTML('afterend', teclado);
+
+    let elementTeclado = document.querySelectorAll('.btn-teclado');
+    elementTeclado.forEach( (value,index) => {
+      elementTeclado[index].addEventListener('click', () => this.tentar(value));
+    });
+  
   }
 
   render() {

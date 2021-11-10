@@ -36,9 +36,8 @@ export default class Store {
       return false;
     }
 
-    func(self, payload);
-
-    return true;
+    return func(self, payload);
+    //return true;
   }
 
   commit(mutationKey, payload) {

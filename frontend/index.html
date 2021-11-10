@@ -25,15 +25,17 @@
 
         <div id="tentativas-container">
           <div id="vidas"></div>
-          <label for="letra-tentativa">Digite uma letra (sem acento):</label>
-          <input type="text" id="letra-tentativa" maxlength="1" />
+
+          <label for="letra-tentativa">Selecione uma letra:</label>
+          <div id="teclado"> </div>
+
+          <label for="letra-tentativa">Ou tente acertar a palavra inteira:</label>
+          <input type="text" id="letra-tentativa"/>
           <button id="btn-tentar">Tentar</button>
         </div>
       </div>
 
-      <div>
-        <h2 id="resultado"></h2>
-      </div>
+      <div id="resultado"> </div>
 
       <div id="novo-container">
         <label for="name">

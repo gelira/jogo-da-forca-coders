@@ -22,10 +22,23 @@ export default { async [ACTIONS.FETCH_PALAVRA] (context) {
       const item = palavra_masked[i];
       if (item.letra_cleaned === letra) {
         context.commit(MUTATIONS.ACERTO_TENTATIVA, { letra });
-        return;
+        return true;
       }
     }
 
     context.commit(MUTATIONS.ERRO_TENTATIVA);
+    return false;
+  },
+
+  [ACTIONS.TENTATIVATOTAL] (context, payload) {
+    const { palavra } = payload;
+
+      if (context.state.palavra_cleaned == palavra) {
+        context.commit(MUTATIONS.ACERTO_PALAVRA, { palavra });
+        return true;
+      }
+ 
+    context.commit(MUTATIONS.ERRO_TENTATIVA);
+    return false;
   },
 };

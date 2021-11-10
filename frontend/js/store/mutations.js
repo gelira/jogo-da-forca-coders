@@ -33,6 +33,8 @@ export default {
     state.dica = dica;
     state.palavra_masked = palavra_masked;
     state.letras_restantes = letras_restantes;
+    state.palavra_cleaned = palavra_cleaned;
+    state.status = 0;
   },
 
   [MUTATIONS.ERRO_TENTATIVA] (state) {
@@ -51,5 +53,21 @@ export default {
       return item;
     });
     state.letras_restantes = lr;
+  },
+
+  [MUTATIONS.ACERTO_PALAVRA] (state, payload) {
+    const { palavra } = payload;
+
+    if (state.palavra_cleaned == palavra) {
+      for(let i=0; i<palavra.length; i++){
+        if (state.palavra_cleaned[i] == palavra[i] && state.palavra_masked[i].masked) {
+          state.letras_restantes --;
+          state.palavra_masked[i].masked = false;
+        }
+        console.log(state.palavra_masked[i]);
+      }
+      state.status = 0;
+    }
+
   },
 };
