@@ -18,7 +18,12 @@ export default class Store {
     this.state = new Proxy((params.state || {}), {
       set: (state, key, value) => {
         state[key] = value;
-        this.events.publish('stateChange', state);
+        if (key === 'tempo') {
+          this.events.publish('tempoChange', state);
+        }
+        else {
+          this.events.publish('stateChange', state);
+        }
         return true;
       }
     });
