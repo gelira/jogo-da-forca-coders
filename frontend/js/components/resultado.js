@@ -4,13 +4,11 @@ import { ACTIONS } from '../store/types.js';
 export default class Resultado extends Component {
   constructor() {
     super();
-    
-    const self = this;
+  
+    this.elementResultado = document.getElementById('resultado');
+    this.elementNovoJogo = document.getElementById('novo-jogo');
 
-    self.elementResultado = document.getElementById('resultado');
-    self.elementNovoJogo = document.getElementById('novo-jogo');
-
-    self.elementNovoJogo.addEventListener('click', () => self.novoJogo());
+    this.elementNovoJogo.addEventListener('click', () => this.novoJogo());
   }
 
   novoJogo() {
@@ -36,13 +34,20 @@ export default class Resultado extends Component {
       letras_restantes,
     } = this.store.state;
 
-    if (vidas <= 0) {
+    let fimDeJogo = false;
+
+    if (vidas === 0) {
       this.showResultado(`Você perdeu!! A palavra é: ${palavra}`);
-      return;
+      fimDeJogo = true;
     }
 
-    if (letras_restantes <= 0) {
+    if (letras_restantes === 0) {
       this.showResultado(`Parabéns!! A palavra é: ${palavra}`);
+      fimDeJogo = true;
+    }
+
+    if (fimDeJogo) {
+      this.store.dispatch(ACTIONS.PARAR_TEMPO);
       return;
     }
 
