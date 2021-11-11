@@ -64,4 +64,22 @@ export default {
   [MUTATIONS.INCREMENTAR_TEMPO] (state) {
     state.tempo ++;
   },
+
+  [MUTATIONS.DEFINIR_PROGRESSO] (state, payload) {
+    const {
+      vidas,
+      palavra,
+      dica,
+      tempo,
+      palavra_masked,
+      letras_restantes,
+    } = payload;
+
+    state.vidas = vidas;
+    state.palavra = palavra;
+    state.dica = dica;
+    state.tempo = tempo;
+    state.palavra_masked = palavra_masked;
+    state.letras_restantes = letras_restantes;
+  },
 };

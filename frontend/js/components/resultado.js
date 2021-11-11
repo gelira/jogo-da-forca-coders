@@ -12,6 +12,13 @@ export default class Resultado extends Component {
   }
 
   novoJogo() {
+    const progresso = this.store.dispatch(ACTIONS.CARREGAR_PROGRESSO);
+
+    if (progresso) {
+      this.store.dispatch(ACTIONS.INICIAR_TEMPO);
+      return;
+    }
+
     this.store.dispatch(ACTIONS.FETCH_PALAVRA)
       .then(() => {
         this.store.dispatch(ACTIONS.INICIAR_TEMPO, { tempo: 0 });
@@ -51,6 +58,7 @@ export default class Resultado extends Component {
 
     if (fimDeJogo) {
       this.store.dispatch(ACTIONS.PARAR_TEMPO);
+      this.store.dispatch(ACTIONS.LIMPAR_PROGRESSO);
       return;
     }
 

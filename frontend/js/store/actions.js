@@ -40,4 +40,35 @@ export default {
     const { tempo_interval } = context.state;
     clearInterval(tempo_interval);
   },
+
+  [ACTIONS.CARREGAR_PROGRESSO] (context) {
+    const progresso = localStorage.getItem('progresso');
+    if (!progresso) {
+      return false;
+    }
+
+    const {
+      vidas,
+      palavra,
+      dica,
+      tempo,
+      palavra_masked,
+      letras_restantes,
+    } = JSON.parse(progresso);
+
+    context.commit(MUTATIONS.DEFINIR_PROGRESSO, {
+      vidas,
+      palavra,
+      dica,
+      tempo,
+      palavra_masked,
+      letras_restantes,
+    });
+
+    return true;
+  },
+
+  [ACTIONS.LIMPAR_PROGRESSO] () {
+    localStorage.removeItem('progresso');
+  },
 };
