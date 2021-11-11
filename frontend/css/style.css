@@ -1,3 +1,46 @@
+html {
+  height: 100%;
+  display: table;
+  margin: auto;
+}
+
+body {
+  width: 1000px;
+  background-color: #1d1e1f;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+header {
+  padding-bottom: 20px;
+}
+
+.container {
+  padding: 20px 40px 30px 40px;
+    background-color: #1d1e1f;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 20px;
+    border: 1px solid #ececec;
+    -webkit-box-shadow: 3px 3px 8px 0px rgba(50, 50, 50, 0.5);
+-moz-box-shadow:    3px 3px 8px 0px rgba(50, 50, 50, 0.5);
+box-shadow:         3px 3px 8px 0px rgba(50, 50, 50, 0.5);
+}
+
+.window {
+  width: 100%;
+}
+
+.jogo {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
 #palavra-masked, #vidas {
   display: flex;
 }
@@ -6,11 +49,54 @@
   display: none;
 }
 
+h1 {
+  font-family: 'Staatliches', cursive;
+  font-size: 70px;
+  margin: 0px;
+  color: #ececec;
+  text-align: center;
+}
+
+#componentes {
+  margin: 0px;
+  text-align: center;
+  font-size: 14px;
+  color: #ececec;
+  font-family: 'Roboto', sans-serif;
+}
+p, #tema {
+  padding-bottom: 10px;
+  font-size: 16px;
+  color: #ececec;
+  font-family: 'Roboto', sans-serif;
+}
+#letras-restantes, #contador {
+  font-size: 14px;
+}
+
+#texto-ajuda {
+  font-size: 16px;
+  color: #ececec;
+  font-family: 'Roboto', sans-serif;
+  padding-right: 10px;
+}
+
 .letra {
-  border: 2px solid black;
-  font-size: 20px;
+  width: 20px;
+  color: #ececec;
+    font-size: 20px;
+    text-transform: uppercase;
+    text-align: center;
+  border: 1px solid #ececec;
   padding: 10px;
-  margin-left: 10px;
+  margin: 0 10px 10px 0;
+}
+
+.direita {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
 }
 
 .vida-item {
@@ -25,3 +111,53 @@
 main > div {
   margin-bottom: 20px;
 }
+
+@media (min-width: 801px) and (max-width: 1200px) {
+  .window {
+      width: 90%;
+  }
+  main {
+      padding-top: 30px;
+  }
+
+  }
+@media (max-width: 800px) {
+      body{
+          width: 95%;
+      }
+      main {
+          padding-top: 15px;
+      }
+      p {
+          padding: 15px;
+      }
+      .window {
+          width: 95%;
+          flex-direction: column;
+      }
+      .jogo {
+          flex-direction: column;
+      }
+      .direita {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+  }
+  
+@media (min-width: 1201px){
+      
+  }
+
+
+  /*
+  
+  <div id="game">
+            <div id="dados" class="">
+              <div>Nome: <span id="nome-view">Denadai</span></div>
+              <div><span id="contador"></span></div>
+          </div>
+
+
+
+  */
