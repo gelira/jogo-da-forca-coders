@@ -1,10 +1,10 @@
 import { ACTIONS, MUTATIONS } from './types.js';
 
 export default {
-  [ACTIONS.FETCH_PALAVRA] (context) {
-    fetch('http://localhost:3000/palavra')
-      .then(response => response.json())
-      .then(data => context.commit(MUTATIONS.SET_PALAVRA, data));
+  async [ACTIONS.FETCH_PALAVRA] (context) {
+    const response = await fetch('http://localhost:3000/palavra')
+    const data = await response.json();
+    context.commit(MUTATIONS.SET_PALAVRA, data);
   },
 
   [ACTIONS.TENTATIVA] (context, payload) {
