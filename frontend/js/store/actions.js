@@ -67,4 +67,8 @@ export default {
 
     return true;
   },
+
+  [ACTIONS.LIMPAR_PROGRESSO] () {
+    localStorage.removeItem('progresso');
+  },
 };
