@@ -19,7 +19,7 @@ export default class Store {
       set: (state, key, value) => {
         state[key] = value;
 
-        localStorage.setItem('progress', JSON.stringify(state));
+        localStorage.setItem('progresso', JSON.stringify(state));
 
         if (key === 'tempo') {
           this.events.publish('tempoChange', state);

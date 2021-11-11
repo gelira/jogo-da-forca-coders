@@ -51,7 +51,7 @@ export default class Resultado extends Component {
 
     if (fimDeJogo) {
       this.store.dispatch(ACTIONS.PARAR_TEMPO);
-      localStorage.removeItem('progress');
+      localStorage.removeItem('progresso');
       return;
     }
 
