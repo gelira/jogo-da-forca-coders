@@ -5,8 +5,8 @@ export default class Resultado extends Component {
   constructor() {
     super();
   
-    this.elementResultado = document.getElementById('resultado');
-    this.elementNovoJogo = document.getElementById('novo-jogo');
+    this.elementResultado = document.querySelector('#resultado');
+    this.elementNovoJogo = document.querySelector('#novo-jogo');
 
     this.elementNovoJogo.addEventListener('click', () => this.novoJogo());
   }

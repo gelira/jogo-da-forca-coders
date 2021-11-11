@@ -5,11 +5,12 @@ export default class Tentativa extends Component {
   constructor() {
     super();
 
-    this.elementVidas = document.getElementById('vidas');
-    this.elementLetraTentativa = document.getElementById('letra-tentativa');
-    this.elementContainer = document.getElementById('tentativas-container');
+    this.elementVidas = document.querySelector('#vidas');
+    this.elementLetraTentativa = document.querySelector('#letra-tentativa');
+    this.elementContainer = document.querySelector('#tentativas-container');
 
-    document.getElementById('btn-tentar').addEventListener('click', () => this.tentar());
+    document.querySelector('#btn-tentar')
+      .addEventListener('click', () => this.tentar());
   }
 
   tentar() {

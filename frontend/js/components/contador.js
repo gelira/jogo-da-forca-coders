@@ -3,6 +3,7 @@ import Component from '../lib/component.js';
 export default class Contador extends Component {
   constructor() {
     super();
+
     this.elementContador = document.querySelector('#contador');
   }
 
