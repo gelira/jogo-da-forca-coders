@@ -12,7 +12,10 @@ export default class Resultado extends Component {
   }
 
   novoJogo() {
-    this.store.dispatch(ACTIONS.FETCH_PALAVRA);
+    this.store.dispatch(ACTIONS.FETCH_PALAVRA)
+      .then(() => {
+        this.store.dispatch(ACTIONS.INICIAR_TEMPO, { tempo: 0 });
+      });
   }
 
   showResultado(mensagem) {
