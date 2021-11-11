@@ -25,7 +25,7 @@ export default {
   [ACTIONS.INICIAR_TEMPO] (context, payload = {}) {
     const { tempo } = payload;
     
-    if (tempo) {
+    if (tempo !== undefined) {
       context.commit(MUTATIONS.DEFINIR_TEMPO, { tempo });
     } 
 
