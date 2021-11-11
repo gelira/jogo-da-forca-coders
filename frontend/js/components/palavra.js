@@ -3,9 +3,10 @@ import Component from '../lib/component.js';
 export default class Palavra extends Component {
   constructor() {
     super();
-    this.elementDica = document.getElementById('dica');
-    this.elementPalavraMasked = document.getElementById('palavra-masked');
-    this.elementLetrasRestantes = document.getElementById('letras-restantes');
+
+    this.elementDica = document.querySelector('#dica');
+    this.elementPalavraMasked = document.querySelector('#palavra-masked');
+    this.elementLetrasRestantes = document.querySelector('#letras-restantes');
   }
 
   showDica() {

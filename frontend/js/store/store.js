@@ -2,56 +2,50 @@ import PubSub from '../lib/pubsub.js';
 
 export default class Store {
   constructor(params) {
-    const self = this;
-
-    self.actions = {};
-    self.mutations = {};
-    self.state = {};
-    self.events = new PubSub();
+    this.actions = {};
+    this.mutations = {};
+    this.state = {};
+    this.events = new PubSub();
 
     if (params.hasOwnProperty('actions')) {
-      self.actions = params.actions;
+      this.actions = params.actions;
     }
 
     if (params.hasOwnProperty('mutations')) {
-      self.mutations = params.mutations;
+      this.mutations = params.mutations;
     }
 
-    self.state = new Proxy((params.state || {}), {
-      set: function (state, key, value) {
+    this.state = new Proxy((params.state || {}), {
+      set: (state, key, value) => {
         state[key] = value;
-        self.events.publish('stateChange', state);
-
+        if (key === 'tempo') {
+          this.events.publish('tempoChange', state);
+        }
+        else {
+          this.events.publish('stateChange', state);
+        }
         return true;
       }
     });
   }
 
   dispatch(actionKey, payload) {
-    const self = this;
-
-    const func = self.actions[actionKey];
+    const func = this.actions[actionKey];
     if (typeof func !== 'function') {
       console.error(`Action "${actionKey}" doesn't exist.`);
       return false;
     }
 
-    func(self, payload);
-
-    return true;
+    return func(this, payload);
   }
 
   commit(mutationKey, payload) {
-    const self = this;
-
-    const func = self.mutations[mutationKey];
+    const func = this.mutations[mutationKey];
     if (typeof func !== 'function') {
       console.log(`Mutation "${mutationKey}" doesn't exist`);
       return false;
     }
 
-    func(self.state, payload);
-
-    return true;
+    return func(this.state, payload);
   }
 }

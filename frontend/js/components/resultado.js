@@ -4,17 +4,18 @@ import { ACTIONS } from '../store/types.js';
 export default class Resultado extends Component {
   constructor() {
     super();
-    
-    const self = this;
+  
+    this.elementResultado = document.querySelector('#resultado');
+    this.elementNovoJogo = document.querySelector('#novo-jogo');
 
-    self.elementResultado = document.getElementById('resultado');
-    self.elementNovoJogo = document.getElementById('novo-jogo');
-
-    self.elementNovoJogo.addEventListener('click', () => self.novoJogo());
+    this.elementNovoJogo.addEventListener('click', () => this.novoJogo());
   }
 
   novoJogo() {
-    this.store.dispatch(ACTIONS.FETCH_PALAVRA);
+    this.store.dispatch(ACTIONS.FETCH_PALAVRA)
+      .then(() => {
+        this.store.dispatch(ACTIONS.INICIAR_TEMPO, { tempo: 0 });
+      });
   }
 
   showResultado(mensagem) {
@@ -36,13 +37,20 @@ export default class Resultado extends Component {
       letras_restantes,
     } = this.store.state;
 
-    if (vidas <= 0) {
+    let fimDeJogo = false;
+
+    if (vidas === 0) {
       this.showResultado(`Você perdeu!! A palavra é: ${palavra}`);
-      return;
+      fimDeJogo = true;
     }
 
-    if (letras_restantes <= 0) {
+    if (letras_restantes === 0) {
       this.showResultado(`Parabéns!! A palavra é: ${palavra}`);
+      fimDeJogo = true;
+    }
+
+    if (fimDeJogo) {
+      this.store.dispatch(ACTIONS.PARAR_TEMPO);
       return;
     }
 
