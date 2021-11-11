@@ -36,9 +36,7 @@ export default class Store {
       return false;
     }
 
-    func(this, payload);
-
-    return true;
+    return func(this, payload);
   }
 
   commit(mutationKey, payload) {
@@ -48,8 +46,6 @@ export default class Store {
       return false;
     }
 
-    func(this.state, payload);
-
-    return true;
+    return func(this.state, payload);
   }
 }
