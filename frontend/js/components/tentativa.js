@@ -4,14 +4,12 @@ import { ACTIONS } from '../store/types.js';
 export default class Tentativa extends Component {
   constructor() {
     super();
-    
-    const self = this;
 
-    self.elementVidas = document.getElementById('vidas');
-    self.elementLetraTentativa = document.getElementById('letra-tentativa');
-    self.elementContainer = document.getElementById('tentativas-container');
+    this.elementVidas = document.getElementById('vidas');
+    this.elementLetraTentativa = document.getElementById('letra-tentativa');
+    this.elementContainer = document.getElementById('tentativas-container');
 
-    document.getElementById('btn-tentar').addEventListener('click', () => self.tentar());
+    document.getElementById('btn-tentar').addEventListener('click', () => this.tentar());
   }
 
   tentar() {
