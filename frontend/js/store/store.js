@@ -18,6 +18,9 @@ export default class Store {
     this.state = new Proxy((params.state || {}), {
       set: (state, key, value) => {
         state[key] = value;
+
+        localStorage.setItem('progress', JSON.stringify(state));
+
         if (key === 'tempo') {
           this.events.publish('tempoChange', state);
         }
