@@ -11,23 +11,27 @@ export default class Modal extends Component {
     this.elementModalBody = document.querySelector('#modal-body');
     
     document.querySelector('#modal-close')
-      .addEventListener('click', () => this.store.commit(ACTIONS.CLOSE_MODAL));
+      .addEventListener('click', () => this.store.dispatch(ACTIONS.CLOSE_MODAL));
+  }
+
+  subscribe() {
+    this.store.events.subscribe('modalChange', () => this.render());
   }
 
   render() {
     const {
-      open_modal,
+      show_modal,
       modal_title,
     } = this.store.state;
+    
+    this.elementModalTitle.innerHTML = modal_title;
 
-    if (open_modal) {
+    if (show_modal) {
       this.elementModal.classList.add('modal-show');
     }
     else {
       this.elementModal.classList.remove('modal-show');
       this.elementModalBody.innerHTML = '';
     }
-
-    this.elementModalTitle.innerHTML = modal_title;
   }
 }

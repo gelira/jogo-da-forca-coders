@@ -24,6 +24,9 @@ export default class Store {
         if (key === 'tempo') {
           this.events.publish('tempoChange', state);
         }
+        else if (['show_modal', 'modal_title'].includes(key)) {
+          this.events.publish('modalChange', state);
+        }
         else {
           this.events.publish('stateChange', state);
         }
