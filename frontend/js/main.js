@@ -2,8 +2,7 @@ import Palavra from './components/palavra.js';
 import Resultado from './components/resultado.js';
 import Tentativa from './components/tentativa.js';
 import Contador from './components/contador.js';
-import Tentativa from './components/tentativa.js'
-import Ranking from './components/ranking.js'
+import Ranking from './components/ranking.js';
 
 window.addEventListener('load', () => {
   const palavra = new Palavra();

@@ -21,6 +21,6 @@ export default class Contador extends Component {
     const segundosText = segundos.toString().padStart(2, '0');
     const minutosText = minutos.toString().padStart(2, '0');
 
-    this.elementContador.innerHTML = `Tempo de jogo: ${minutosText}:${segundosText}`;
+    this.elementContador.innerHTML = `${minutosText}:${segundosText}`;
   }
 }
