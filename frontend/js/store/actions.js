@@ -103,6 +103,15 @@ export default {
     }
   },
 
+  [ACTIONS.CARREGAR_RANKING] (context) {
+    const ranking = localStorage.getItem('ranking');
+    if (ranking) {
+      context.commit(MUTATIONS.DEFINIR_RANKING, {
+        ranking: JSON.parse(ranking),
+      });
+    }
+  },
+
   [ACTIONS.LIMPAR_PROGRESSO] () {
     localStorage.removeItem('progresso');
   },
