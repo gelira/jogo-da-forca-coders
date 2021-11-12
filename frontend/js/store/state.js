@@ -7,4 +7,7 @@ export default {
   tempo_interval: 0,
   palavra_masked: [],
   letras_restantes: -1,
+  nome: '',
+  tempo: 0,
+  ranking: [],
 };

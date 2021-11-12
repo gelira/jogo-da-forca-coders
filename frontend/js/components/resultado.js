@@ -8,6 +8,15 @@ export default class Resultado extends Component {
     this.elementResultado = document.querySelector('#resultado');
     this.elementNovoJogo = document.querySelector('#novo-jogo');
 
+    this.elementNovoContainer = document.getElementById('novo-container');
+    this.elementNome = document.getElementById('name');
+    this.elementNomeView = document.getElementById('nome-view');
+    this.elementTempoView = document.getElementById('tempo-view');
+    this.elementDados = document.getElementById('dados');
+    this.elementGame = document.getElementById('game');
+
+    this.store.state.nome = (localStorage.getItem('nome') === null)? '' : localStorage.getItem('nome') ;
+
     this.elementNovoJogo.addEventListener('click', () => this.novoJogo());
   }
 
@@ -23,18 +32,64 @@ export default class Resultado extends Component {
       .then(() => {
         this.store.dispatch(ACTIONS.INICIAR_TEMPO, { tempo: 0 });
       });
+
+    if(this.elementNome.value) {
+      this.store.state.nome = this.elementNome.value;
+      localStorage.setItem('nome', this.elementNome.value);
+    } else {
+      alert(`É obrigatorio informar um nome para o jogador.`);
+      return;
+    }
+    this.store.state.letras_restantes = -1;
+    this.elementGame.classList.remove('hidden');
+
+    this.store.dispatch(ACTIONS.FETCH_PALAVRA);
+
+    this.store.state.tempo = 0;
+    this.elementclock = setInterval((() => {
+      this.store.state.tempo++;
+    }).bind(this), 1000);
+
+    let elementTeclado = document.querySelectorAll('.btn-teclado');
+    elementTeclado.forEach( (value,index) => {
+      elementTeclado[index].setAttribute("style", "background-color:;");
+      elementTeclado[index].removeAttribute("disabled");
+    });
+    
+    this.hideResultado();
   }
 
-  showResultado(mensagem) {
-    this.elementNovoJogo.classList.remove('hidden');
+  showResultado(mensagem,status) {
+    this.elementResultado.innerHTML = '';
+    
+    const h3 = document.createElement('h3');
+    h3.appendChild(document.createTextNode(mensagem));
+
+    if(!status){
+      const img = document.createElement('img');
+      img.setAttribute('src', 'img/game-over.png');
+      img.classList.add('game-over-item');
+      this.elementResultado.appendChild(img);
+    }
+
+    this.elementNovoContainer.classList.remove('hidden');
     this.elementResultado.classList.remove('hidden');
-    this.elementResultado.innerHTML = mensagem;
+    this.elementResultado.appendChild(h3);
+    clearInterval(this.elementclock);
   }
 
   hideResultado() {
-    this.elementNovoJogo.classList.add('hidden');
+    this.elementNovoContainer.classList.add('hidden');
     this.elementResultado.classList.add('hidden');
     this.elementResultado.innerHTML = '';
+  }
+
+  dados() {
+    if(this.store.state.tempo == 0){
+      this.elementDados.classList.add('hidden');
+    } else {
+      this.elementDados.classList.remove('hidden');
+    }
   }
 
   render() {
@@ -42,6 +97,8 @@ export default class Resultado extends Component {
       vidas, 
       palavra,
       letras_restantes,
+      nome,
+      tempo,
     } = this.store.state;
 
     let fimDeJogo = false;
@@ -62,6 +119,10 @@ export default class Resultado extends Component {
       return;
     }
 
-    this.hideResultado();
+    this.elementNome.value = nome;
+
+    this.elementNomeView.innerHTML = nome;
+    this.elementTempoView.innerHTML = tempo;
+    this.dados();
   }
 }

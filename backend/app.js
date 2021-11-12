@@ -1,56 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 
-const PALAVRAS = [
-  {
-    palavra: 'São Paulo',
-    dica: 'Salve o Tricolor Paulista!! Amado clube brasileiro!!',
-  },
-  {
-    palavra: 'Vasco',
-    dica: 'Tetra rebaixado',
-  },
-  {
-    palavra: 'Santos',
-    dica: 'O time de Pelé',
-  },
-  {
-    palavra: 'Corinthians',
-    dica: 'Campeão da Série B de 2008 KKKK',
-  },
-  {
-    palavra: 'Fluminense',
-    dica: 'Foi vice-campeão duas vezes para a LDU',
-  },
-  {
-    palavra: 'Flamengo',
-    dica: 'É carioca mas se acha europeu',
-  },
-  {
-    palavra: 'Botafogo',
-    dica: 'Viúva do Garrincha',
-  },
-  {
-    palavra: 'Palmeiras',
-    dica: 'Não tem mundial!! 51 é cachaça!!',
-  },
-  {
-    palavra: 'Cruzeiro',
-    dica: 'Fala, Zezé. Bom dia, cara.',
-  },
-  {
-    palavra: 'Atlético Mineiro',
-    dica: 'Time que nunca é bi-campeão',
-  },
-  {
-    palavra: 'Internacional',
-    dica: 'Coitada da Renata Fan',
-  },
-  {
-    palavra: 'Grêmio',
-    dica: 'Imortal que mais morre',
-  },
-];
+let PALAVRAS = require('./model.json');
 
 const app = express();
 app.use(cors());
