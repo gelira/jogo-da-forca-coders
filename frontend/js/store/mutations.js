@@ -88,6 +88,9 @@ export default {
       tempo,
       palavra_masked,
       letras_restantes,
+      nome,
+      tentativas,
+      ranking,
     } = payload;
 
     state.vidas = vidas;
@@ -96,6 +99,9 @@ export default {
     state.tempo = tempo;
     state.palavra_masked = palavra_masked;
     state.letras_restantes = letras_restantes;
+    state.nome = nome;
+    state.tentativas = tentativas;
+    state.ranking = ranking;
   },
 
   [MUTATIONS.ACERTO_PALAVRA] (state) {

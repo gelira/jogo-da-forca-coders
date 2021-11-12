@@ -74,6 +74,9 @@ export default {
       tempo,
       palavra_masked,
       letras_restantes,
+      nome,
+      tentativas,
+      ranking,
     } = JSON.parse(progresso);
 
     context.commit(MUTATIONS.DEFINIR_PROGRESSO, {
@@ -83,6 +86,9 @@ export default {
       tempo,
       palavra_masked,
       letras_restantes,
+      nome,
+      tentativas,
+      ranking,
     });
 
     return palavra_masked.length > 0;
