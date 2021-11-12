@@ -46,7 +46,14 @@ export default {
       state.tentativas = tentativas;
     }
 
-    state.vidas = state.vidas - 1;
+    const vidas = state.vidas - 1;
+
+    if (vidas === 0) {
+      state.show_modal = true;
+      state.modal_title = 'GAME OVER';
+    }
+
+    state.vidas = vidas;
   },
 
   [MUTATIONS.ACERTO_TENTATIVA] (state, payload) {
@@ -66,6 +73,35 @@ export default {
 
     state.letras_restantes = lr;
     state.tentativas = tentativas;
+
+    if (lr === 0) {
+      state.show_modal = true;
+      state.modal_title = 'YOU WIN';
+
+      const { nome, tempo, ranking } = state;
+
+      if (ranking.some(e => e.nome === nome && e.tempo === tempo)) {
+        return;
+      }
+
+      const new_ranking = [...ranking, { nome, tempo }].sort((a, b) => {
+        if (a.tempo > b.tempo) {
+          return 1
+        }
+        if (b.tempo > a.tempo) {
+          return -1;
+        }
+        if (a.nome > b.nome) {
+          return 1
+        }
+        if (b.nome > a.nome) {
+          return -1;
+        }
+        return 0;
+      });
+
+      state.ranking = new_ranking;  
+    }
   },
 
   [MUTATIONS.DEFINIR_TEMPO_INTERVAL] (state, payload) {
