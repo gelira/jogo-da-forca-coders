@@ -9,6 +9,8 @@ export default {
       dica: city,
       palavra: country,
     });
+
+    context.dispatch(ACTIONS.PARAR_TEMPO);
   },
 
   [ACTIONS.TENTATIVA] (context, payload) {
