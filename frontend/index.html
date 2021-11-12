@@ -21,7 +21,6 @@
     <header>
       <div class="title">
         <h1>Jogo da Forca</h1>
-        <h3 id="componentes">Por Bruno Matta, Geraldo Eloi, Julia Miranda, Marcus Vinicius e Paulo Denadai.</h3>
     </header>
     <main class="window">
       <article class="jogo">
@@ -31,32 +30,91 @@
             <p>Dica: <span id="dica"></span></p>
             <div id="palavra-masked"></div>
             <p id="letras-restantes"></p>
-            <p id="contador"></p>
           </div>
         </section>
         <section class="direita">
-          <div id="vidas"></div>
+          <div id="ranking">
+            <button id="ranking-btn"> Mostrar Ranking </button>
+            <div id="ranking-container" class="hidden">
+            </div>
+          </div>
+          <div>
+            <button id="novo-jogo">Novo Jogo</button>
+          </div>
+          <div id="game">
+            <div id="dados" class="">
+              <div>Nome: <span id="nome-view">Denadai</span></div>
+              <div><span id="contador"></span></div>
+            </div>
+            <div id="vidas"></div>
+
+            <!-- Atenção! Mais um display none colocado pra aparecer só quando o JS pedir -->
+            <p id="resultado" style="display: none;"></p>
         </section>
       </article>
     </main>
 
-    <div id="tentativas-container">
-      <label for="letra-tentativa" id="texto-ajuda">Clique em uma das letras do teclado:</label>
+      <div id="tentativas-container" class="">
 
-      <!-- Aqui entrará o teclado virtual -->
-      <!-- Não esquecer de substituir o "label" acima por um h2 -->
-
-      <input type="text" id="letra-tentativa" maxlength="1">
+        <label for="letra-tentativa" id="texto-ajuda">Selecione uma letra:</label>
+        <div id="teclado">
+          <button type="button" id="letterA" class="btn-teclado">A</button>
+          <button type="button" id="letterB" class="btn-teclado">B</button>
+          <button type="button" id="letterC" class="btn-teclado">C</button>
+          <button type="button" id="letterD" class="btn-teclado">D</button>
+          <button type="button" id="letterE" class="btn-teclado">E</button>
+          <button type="button" id="letterF" class="btn-teclado">F</button>
+          <button type="button" id="letterG" class="btn-teclado">G</button>
+          <button type="button" id="letterH" class="btn-teclado">H</button>
+          <button type="button" id="letterI" class="btn-teclado">I</button>
+          <button type="button" id="letterJ" class="btn-teclado">J</button>
+          <button type="button" id="letterK" class="btn-teclado">K</button>
+          <button type="button" id="letterL" class="btn-teclado">L</button>
+          <button type="button" id="letterM" class="btn-teclado">M</button>
+          <button type="button" id="letterN" class="btn-teclado">N</button>
+          <button type="button" id="letterO" class="btn-teclado">O</button>
+          <button type="button" id="letterP" class="btn-teclado">P</button>
+          <button type="button" id="letterQ" class="btn-teclado">Q</button>
+          <button type="button" id="letterR" class="btn-teclado">R</button>
+          <button type="button" id="letterS" class="btn-teclado">S</button>
+          <button type="button" id="letterT" class="btn-teclado">T</button>
+          <button type="button" id="letterU" class="btn-teclado">U</button>
+          <button type="button" id="letterV" class="btn-teclado">V</button>
+          <button type="button" id="letterW" class="btn-teclado">W</button>
+          <button type="button" id="letterX" class="btn-teclado">X</button>
+          <button type="button" id="letterY" class="btn-teclado">Y</button>
+          <button type="button" id="letterZ" class="btn-teclado">Z</button>
+        </div>
+      </div>
+      <div>
+      <label for="letra-tentativa">Ou tente acertar a palavra inteira:</label>
+      <input type="text" id="letra-tentativa">
       <button id="btn-tentar">Tentar</button>
     </div>
-    <div>
-      <p id="resultado"></p>
-      <button id="novo-jogo">Novo Jogo</button>
     </div>
   </div>
 
-  <script type="module" src="js/main.js"></script>
+  <div id="resultado" class="hidden"></div>
+
+  <!-- Deixei esses abaixo invisíveis pois acho q deve ser mostrado quando acabar a partida, precisa conferir se há um event listener para ativar o display deles -->
+  <div id="modal-result" class="modal-container" style="display: none;">
+    <div class="modal">
+      <button class="fechar">x</button>
+      <h3 class="subtitle">Resultado da Partida</h3>
+    </div>
   </div>
+  <div id="novo-container" class="hidden" style="display: none;">
+    <label for="name">
+      Nome:
+      <input type="text" id="name">
+    </label>
+  </div>
+  
+  </main>
+  <footer>
+    <p id="componentes">Por Bruno Matta, Geraldo Eloi, Julia Miranda, Marcus Vinicius e Paulo Denadai.</p>
+  </footer>
+  <script type="module" src="js/main.js"></script>
 </body>
 
 </html>

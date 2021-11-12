@@ -18,16 +18,12 @@ header {
 .container {
   padding: 20px 40px 30px 40px;
     background-color: #1d1e1f;
-    height: 450px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     border-radius: 20px;
     border: 1px solid #ececec;
-    -webkit-box-shadow: 3px 3px 8px 0px rgba(50, 50, 50, 0.5);
--moz-box-shadow:    3px 3px 8px 0px rgba(50, 50, 50, 0.5);
-box-shadow:         3px 3px 8px 0px rgba(50, 50, 50, 0.5);
 }
 
 .window {
@@ -45,10 +41,6 @@ box-shadow:         3px 3px 8px 0px rgba(50, 50, 50, 0.5);
   display: flex;
 }
 
-.hidden {
-  display: none;
-}
-
 h1 {
   font-family: 'Staatliches', cursive;
   font-size: 70px;
@@ -57,15 +49,24 @@ h1 {
   text-align: center;
 }
 
+#dados {
+  text-align: end;
+  padding-bottom: 10px;
+  font-size: 14px;
+  color: #ececec;
+  font-family: 'Roboto', sans-serif;
+  margin: 10px 0px;
+}
+
 #componentes {
-  margin: 0px;
+  margin: 20px;
   text-align: center;
   font-size: 14px;
   color: #ececec;
   font-family: 'Roboto', sans-serif;
 }
-p, #tema {
-  padding-bottom: 10px;
+p, #tema, label {
+  padding-bottom: 5px;
   font-size: 16px;
   color: #ececec;
   font-family: 'Roboto', sans-serif;
@@ -78,7 +79,41 @@ p, #tema {
   font-size: 16px;
   color: #ececec;
   font-family: 'Roboto', sans-serif;
-  padding-right: 10px;
+  margin-bottom: 30px;
+}
+
+#teclado {
+  padding: 5px;
+  margin: 10px 0 25px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn-teclado {
+  margin: 5px;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #242424;
+  font-size: 20px;
+  color: #ececec;
+  border: 1px solid #ececec;
+  box-shadow: 3px 3px 1px #3b3b3b;
+
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.btn-teclado:hover {
+  cursor: pointer;
+  transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgb(109, 109, 109,0.2);
+}
+.btn-teclado:active {
+  transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgb(109, 109, 109,0.2);
 }
 
 .letra {
@@ -88,6 +123,7 @@ p, #tema {
     text-transform: uppercase;
     text-align: center;
   border: 1px solid #ececec;
+  border-radius: 8px;
   padding: 10px;
   margin: 0 10px 10px 0;
 }
@@ -96,7 +132,57 @@ p, #tema {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  justify-content: flex-start;
+}
 
+#letra-tentativa {
+  background-color: #1d1e1f;
+  border: 1px solid #ececec;
+  margin: 0 10px;
+  border-radius: 5px;
+  height: 30px;
+  color: #ececec;
+  font-size: 14px;
+  padding: 0;
+}
+
+#btn-tentar {
+  background-color: #69c069;
+  width: 80px;
+  height: 30px;
+  border: 1px solid #ececec;
+  border-radius: 5px;
+  font-size: 14px;
+}
+#btn-tentar:hover {
+  cursor: pointer;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgb(109, 109, 109,0.2);
+}
+#btn-tentar:active {
+  transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgb(109, 109, 109,0.2);
+}
+
+#ranking-btn, #novo-jogo {
+  background-color: #242424;
+  font-size: 14px;
+  color: #ececec;
+  margin-bottom: 15px;
+  font-family: 'Roboto', sans-serif;
+  border: 1px solid #ececec;
+  width: 150px;
+  height: 30px;
+  border-radius: 5px;
+}
+#ranking-btn:hover, #novo-jogo:hover {
+  cursor: pointer;
+  transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgb(109, 109, 109,0.2);
+}
+#ranking-btn:active, #novo-jogo:active {
+  transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgb(109, 109, 109,0.2);
 }
 
 .vida-item {
@@ -106,10 +192,6 @@ p, #tema {
 
 .game-over-item { 
   width: 100px;
-}
-
-main > div {
-  margin-bottom: 20px;
 }
 
 @media (min-width: 801px) and (max-width: 1200px) {
@@ -146,18 +228,7 @@ main > div {
   }
   
 @media (min-width: 1201px){
-      
+  .container {
+    width: 1000px;
   }
-
-
-  /*
-  
-  <div id="game">
-            <div id="dados" class="">
-              <div>Nome: <span id="nome-view">Denadai</span></div>
-              <div><span id="contador"></span></div>
-          </div>
-
-
-
-  */
+  }
