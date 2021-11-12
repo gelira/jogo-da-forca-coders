@@ -8,8 +8,9 @@ export default class Tentativa extends Component {
     this.elementVidas = document.querySelector('#vidas');
     this.elementLetraTentativa = document.querySelector('#letra-tentativa');
     this.elementContainer = document.querySelector('#tentativas-container');
-    this.elementResultado = document.getElementById('resultado');
-    this.elementGame = document.getElementById('game');
+    this.elementResultado = document.querySelector('#resultado');
+    this.elementGame = document.querySelector('#game');
+    this.elementTeclado = document.querySelector('#teclado');
 
     document.querySelector('#btn-tentar')
       .addEventListener('click', () => this.tentar());
@@ -77,26 +78,23 @@ export default class Tentativa extends Component {
     this.elementGame.classList.add('hidden');
   }
 
-  renderTeclado(){
-    let teclado = "<table cellpadding=3 cellspacing=6 width=390 height=90> <tr>";
-    let linha = 0;
-    for(let i=65; i<91; i++) {
-        if(linha == 8) {
-            linha = 0;
-            teclado += "</tr><tr>";
-        }
-        teclado += "<td align=center valign=middle width=15> ";
-        teclado += `<button type=button id="letter`+ String.fromCharCode(i) +`" class="btn-teclado">`+ String.fromCharCode(i) +`</button></td>`;
-        linha++;
-    }
-    teclado += "</tr></table>";
-    document.getElementById('teclado').insertAdjacentHTML('afterend', teclado);
+  renderTeclado() {
+    const alfabeto = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    for (let i = 0; i < alfabeto.length; i ++) {
+      const letra = alfabeto[i];
+      const btn = document.createElement('button');
 
-    let elementTeclado = document.querySelectorAll('.btn-teclado');
-    elementTeclado.forEach( (value,index) => {
-      elementTeclado[index].addEventListener('click', () => this.tentar(value));
-    });
-  
+      btn.id = `letra${letra}`;
+      btn.dataset.letra = letra;
+      btn.innerHTML = letra;
+      btn.classList.add('btn-teclado');
+
+      this.elementTeclado.appendChild(btn);
+
+      btn.addEventListener('click', () => {
+        console.log(btn.dataset.letra);
+      });
+    }
   }
 
   render() {
