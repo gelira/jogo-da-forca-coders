@@ -19,33 +19,37 @@
 <body>
   <div class="container">
     <header>
+      <div>
+        <button id="novo-jogo">Novo Jogo</button>
+      </div>
       <div class="title">
         <h1>Jogo da Forca</h1>
+      </div>
+      <div>
+      <div id="ranking">
+        <button id="ranking-btn"> Mostrar Ranking </button>
+        <div id="ranking-container" class="hidden">
+        </div>
+        <div id="game">
+          <div id="dados" class="">
+            <div>Nome: <span id="nome-view">Denadai</span></div>
+            <div><span id="contador"></span></div>
+          </div>
+          </div>
+      </div>
+      </div>
     </header>
     <main class="window">
       <article class="jogo">
         <section class="esquerda">
-          <p id="tema">Tema: Times de Futebol</p>
+          <p id="tema">Tema: Países</p>
           <div>
-            <p>Dica: <span id="dica"></span></p>
+            <p>Dica (Capital): <span id="dica"></span></p>
             <div id="palavra-masked"></div>
             <p id="letras-restantes"></p>
           </div>
         </section>
         <section class="direita">
-          <div id="ranking">
-            <button id="ranking-btn"> Mostrar Ranking </button>
-            <div id="ranking-container" class="hidden">
-            </div>
-          </div>
-          <div>
-            <button id="novo-jogo">Novo Jogo</button>
-          </div>
-          <div id="game">
-            <div id="dados" class="">
-              <div>Nome: <span id="nome-view">Denadai</span></div>
-              <div><span id="contador"></span></div>
-            </div>
             <div id="vidas"></div>
 
             <!-- Atenção! Mais um display none colocado pra aparecer só quando o JS pedir -->

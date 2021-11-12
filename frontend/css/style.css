@@ -12,11 +12,15 @@ body {
 }
 
 header {
+  width: 100%;
   padding-bottom: 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
 }
 
 .container {
-  padding: 20px 40px 30px 40px;
+  padding: 20px 20px 30px 20px;
     background-color: #1d1e1f;
     display: flex;
     flex-direction: column;
@@ -38,7 +42,7 @@ header {
 }
 
 #palavra-masked, #vidas {
-  display: flex;
+  display: flex;  
 }
 
 h1 {
@@ -130,9 +134,9 @@ p, #tema, label {
 
 .direita {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-end;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 #letra-tentativa {
@@ -180,6 +184,7 @@ p, #tema, label {
   transform: translateY(-2px);
     box-shadow: 0 10px 20px rgb(109, 109, 109,0.2);
 }
+
 #ranking-btn:active, #novo-jogo:active {
   transform: translateY(-1px);
     box-shadow: 0 5px 10px rgb(109, 109, 109,0.2);
@@ -195,26 +200,29 @@ p, #tema, label {
 }
 
 @media (min-width: 801px) and (max-width: 1200px) {
+  body {
+    padding: 20px;
+  }
   .window {
-      width: 90%;
+      width: 100%;
   }
-  main {
-      padding-top: 30px;
+  #palavra-masked {
+    flex-wrap: wrap;
   }
+
 
   }
 @media (max-width: 800px) {
+  html {
+    display: table;
+  }
       body{
-          width: 95%;
-      }
-      main {
-          padding-top: 15px;
-      }
-      p {
-          padding: 15px;
+          width: 100%;
+          padding: 20px;
+          display: table-cell;
       }
       .window {
-          width: 95%;
+          width: 100%;
           flex-direction: column;
       }
       .jogo {
@@ -224,6 +232,12 @@ p, #tema, label {
         display: flex;
         flex-direction: row;
         justify-content: center;
+      }
+      #palavra-masked {
+        flex-wrap: wrap;
+      }
+      #vidas {
+        margin-bottom: 20px;
       }
   }
   
