@@ -26,20 +26,19 @@ export default class Tentativa extends Component {
       return;
     }
     
-    if (letra.length === 1 && this.alfabeto.includes(letra)) {
-      this.store.dispatch(ACTIONS.TENTATIVA, { letra });
-    } 
-
-    this.elementLetraTentativa.value = '';
-  }
-
-  tentarPalavra() {
-    const { vidas, letras_restantes } = this.store.state;
-    if (vidas <= 0 || letras_restantes <= 0) {
-      return;
+    if (!letra) {
+      letra = this.elementLetraTentativa.value;
     }
-    const palavra = this.elementLetraTentativa.value.trim().toUpperCase();
-    this.store.dispatch(ACTIONS.TENTATIVATOTAL, { palavra });
+
+    if (letra.length === 1) {
+      if (this.alfabeto.includes(letra)) {
+        this.store.dispatch(ACTIONS.TENTATIVA, { letra });
+      }
+    }
+    else {
+      this.store.dispatch(ACTIONS.TENTATIVA_TOTAL, { palavra: letra });
+    }
+
     this.elementLetraTentativa.value = '';
   }
 

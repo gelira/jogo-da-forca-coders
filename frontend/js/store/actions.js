@@ -27,13 +27,16 @@ export default {
     return false;
   },
 
-  [ACTIONS.TENTATIVATOTAL] (context, payload) {
+  [ACTIONS.TENTATIVA_TOTAL] (context, payload) {
     const { palavra } = payload;
 
-      if (context.state.palavra_cleaned == palavra) {
-        context.commit(MUTATIONS.ACERTO_PALAVRA, { palavra });
-        return true;
-      }
+    const palavra_cleaned = palavra.trim().toUpperCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+
+    if (context.state.palavra_cleaned === palavra_cleaned) {
+      context.commit(MUTATIONS.ACERTO_PALAVRA);
+      return true;
+    }
  
     context.commit(MUTATIONS.ERRO_TENTATIVA);
     return false;
