@@ -1,0 +1,312 @@
+[33mcommit c47dce7ee09c6b6793dfaa2c2064952af07651ce[m[33m ([m[1;36mHEAD -> [m[1;32mstyle[m[33m, [m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m
+Merge: 7956b2b 29b99e6
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Wed Nov 10 22:00:44 2021 -0300
+
+    Merge branch 'contador' into develop
+
+[33mcommit 29b99e6aa408c123732274393bc0532f0a3578d0[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Wed Nov 10 21:59:14 2021 -0300
+
+    usando querySelector
+
+[33mcommit 97134e7372197d2fdad15c4fb3c79c7f7bc2da0c[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Wed Nov 10 21:54:50 2021 -0300
+
+    usando this ao invés de self
+
+[33mcommit ac8acdd62940a4a9d88c93d5b4a55274ed257037[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Wed Nov 10 21:42:49 2021 -0300
+
+    correção detratamento de tempo
+
+[33mcommit b011f2cd39e791cc8313486520563ea23d468750[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Wed Nov 10 21:42:12 2021 -0300
+
+    retorno da função de dispatch e commit
+
+[33mcommit a661475566a1a67252e98e4e29a86cdcd54fafc5[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Wed Nov 10 21:41:50 2021 -0300
+
+    inicio do contador na chamada de novo jogo
+
+[33mcommit b96b4812b3e11ef6ed011169d4b6a2ade8e95009[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Wed Nov 10 21:31:52 2021 -0300
+
+    fetch palavra async
+
+[33mcommit d16f12b4ea85069140f8ead4357c83fb26b7b71b[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Wed Nov 10 21:28:20 2021 -0300
+
+    parando tempo ao fim do jogo
+
+[33mcommit 6759d17960c79953ceedae00f5c9eb68ceb842a6[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Wed Nov 10 20:57:09 2021 -0300
+
+    iniciando tempo no contador
+
+[33mcommit c6936bab59e7bf65fa0f0facb45d8b1d89778647[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Wed Nov 10 20:49:45 2021 -0300
+
+    iniciando contador e action de tempo
+
+[33mcommit 5be11c2ff3488b414d418b489856d58b1cab27d7[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Wed Nov 10 20:49:21 2021 -0300
+
+    actions e mutations de tempo
+
+[33mcommit 90a2a89e10d32071c8be73a7191ea179e89940d8[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Wed Nov 10 20:47:58 2021 -0300
+
+    elemento para renderizar o contador
+
+[33mcommit 3bd738bcb41d9416f3c5d5789cdea2ff7f596e10[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Wed Nov 10 20:47:39 2021 -0300
+
+    componente de contador
+
+[33mcommit 3f35092c5c4987d46be6fa088e0029e4198a49e0[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Wed Nov 10 20:47:12 2021 -0300
+
+    state de tempo
+
+[33mcommit 61c920ac0766faa544de2eade505a6b793170925[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Wed Nov 10 20:46:52 2021 -0300
+
+    evento para atualizar apenas componentes de tempo
+
+[33mcommit 1723135c080a9fcb8f02c90d01674e5ba98c47ff[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Wed Nov 10 19:31:37 2021 -0300
+
+    modificando classe Store
+
+[33mcommit 987f50625f398dafbae97f841e34b38422efedcb[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Wed Nov 10 19:23:37 2021 -0300
+
+    modificando a classe Component
+
+[33mcommit 7956b2b63fac18026ab190948106b8d023e2c275[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Mon Sep 27 20:13:00 2021 -0300
+
+    removendo pacote main obsoleto
+
+[33mcommit fdbdf57d58844bbc07e05797e3d6b7ecfadf91f9[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Mon Sep 27 14:04:38 2021 -0300
+
+    alterando estrutura da página
+
+[33mcommit 8dbb3c34e2939f2e5b26984685274ae834a4ccc0[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Mon Sep 27 14:03:41 2021 -0300
+
+    evitando reprocessar letras já acertadas
+
+[33mcommit cf4ceac496f6cf79b400b605ac6436a506832adc[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Mon Sep 27 13:59:18 2021 -0300
+
+    checando tamanho da entrada
+
+[33mcommit 35de2e2dd87af29dd203d8e3cb25b7421558a6ed[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Mon Sep 27 13:50:22 2021 -0300
+
+    estrutura básica
+
+[33mcommit bee866e5e29318ee7e98d717380b5de96d2a0aeb[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Mon Sep 27 13:49:32 2021 -0300
+
+    módulo principal js
+
+[33mcommit c39ba3dd1f46e594c2031b7b65a465a87aa53bc7[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Mon Sep 27 13:49:14 2021 -0300
+
+    estilo provisório
+
+[33mcommit 5939ef406beb7859868085a47ed278d21137ea63[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Mon Sep 27 13:48:36 2021 -0300
+
+    refatorando componente tentativa
+
+[33mcommit 14ad41384d9c73eb8be25054016b6c74899a670d[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Mon Sep 27 13:48:17 2021 -0300
+
+    refatorando componente palavra
+
+[33mcommit d4dd9da43cf337cd041e94ade5b15d736642efeb[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Mon Sep 27 13:48:01 2021 -0300
+
+    componente de resultado
+
+[33mcommit 4149158148517e47204a49cf024c2ae8eb70d9b3[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Mon Sep 27 13:47:35 2021 -0300
+
+    imagem game over
+
+[33mcommit b76ade138d4cb4bf48156e3d02d69c65aa2979c2[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Mon Sep 27 13:47:06 2021 -0300
+
+    correção de variável
+
+[33mcommit 090af44a148b28f8d4253d28a87563f23d17b485[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Mon Sep 27 12:26:02 2021 -0300
+
+    correção da quantidade de letras restantes
+
+[33mcommit 1557736ccbe177463d24e742d83e62a9e921d0ad[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Mon Sep 27 11:29:58 2021 -0300
+
+    imagem de vida
+
+[33mcommit c44ed5c9d8c365fb0117554e986ab07c3775095d[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Mon Sep 27 11:29:38 2021 -0300
+
+    renderizando resultado
+
+[33mcommit dd83b59fbee13b59dc59deec2fbc37728cb3a5d9[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Mon Sep 27 11:24:44 2021 -0300
+
+    checando quantidade de vidas
+
+[33mcommit b6d7bfc346fa099d8d57a25c4ecaed9ce46c5333[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Mon Sep 27 11:23:39 2021 -0300
+
+    redefinindo quantidade de vidas
+
+[33mcommit e78b96fd2406c3ed526fbab7afe8d74b758aa130[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Mon Sep 27 11:10:35 2021 -0300
+
+    componente tentativa
+
+[33mcommit d0c798b33a0569c066510f5b8c57487a92c758f7[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Mon Sep 27 10:34:02 2021 -0300
+
+    componente palavra
+
+[33mcommit 0c039c64648e85cd48fd82f22eb015eecdb692e0[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Mon Sep 27 10:32:56 2021 -0300
+
+    correção de erro de sintaxe no component
+
+[33mcommit 9cfbf895d6d45f09b75e16d637682e57c9275eac[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Sun Sep 26 21:48:04 2021 -0300
+
+    registrando store em todos os componentes
+
+[33mcommit 666c0f60f9f479b270e6a5a53978626ff606ac20[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Sun Sep 26 17:51:00 2021 -0300
+
+    corrigindo código inalcançável
+
+[33mcommit 7a0eeb6ba76bc5a1cd52720483c404a14c719557[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Sun Sep 26 15:46:58 2021 -0300
+
+    reduzindo quantidade de atualizações do Proxy
+
+[33mcommit 77c87bd3376543b960c489971420892de85a1647[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Sun Sep 26 15:44:42 2021 -0300
+
+    Tratamento de tentativa
+
+[33mcommit 13117daa3e18649e3c4906f2346771ce79fd3c3e[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Sun Sep 26 14:56:16 2021 -0300
+
+    buscando palavra na API
+
+[33mcommit d957141ae424ea48d8ba0fbdccb62d1eb3a58595[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Sun Sep 26 14:55:56 2021 -0300
+
+    tratamento de definição de palavra
+
+[33mcommit 5b76a957c57177cb2ada681ebf51a086797058ed[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Sun Sep 26 14:55:03 2021 -0300
+
+    estado inicial
+
+[33mcommit 817006af1f723fad682b2a25f39cb4493ecb9fe1[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Sun Sep 26 14:54:49 2021 -0300
+
+    pacote de types
+
+[33mcommit 9d72ed6855cf689412c68c34df1f96ec9f3d0a4e[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Sun Sep 26 14:16:51 2021 -0300
+
+    componente base
+
+[33mcommit 905ef5505c72a43bb87811098ce48c87d6db2829[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Sun Sep 26 14:16:22 2021 -0300
+
+    state management
+
+[33mcommit fa97e3e2c08952edc337e064f5915f88446afbee[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Sun Sep 26 14:14:08 2021 -0300
+
+    mecanismo PubSub
+
+[33mcommit 488a15230d55ecd5cf3d74b48f58ebd8ad4c9f36[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Sun Sep 26 11:12:23 2021 -0300
+
+    buscando a palavra
+
+[33mcommit cfc32af2e5ac044efbc522ceac163193665d0fca[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Sun Sep 26 10:50:41 2021 -0300
+
+    CORS
+
+[33mcommit 47417b68e42b969b84003d08ffa6a0bba7605115[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Sun Sep 26 10:36:02 2021 -0300
+
+    api para palavras aleatórias
+
+[33mcommit 13ee36941fa9b9bcaacb4828440f863a55b688e9[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Geraldo Eloi <geraldo.eloi11@gmail.com>
+Date:   Sun Sep 26 09:42:21 2021 -0300
+
+    commit inicial

@@ -1,16 +1,193 @@
-#palavra-masked, #vidas {
-  display: flex;
+html {
+  height: 100%;
+  display: table;
+  margin: auto;
 }
 
-.hidden {
-  display: none;
+body {
+  width: 1000px;
+  background-color: #1d1e1f;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+header {
+  width: 100%;
+  padding-bottom: 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.container {
+  padding: 20px 20px 30px 20px;
+    background-color: #1d1e1f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 20px;
+    border: 1px solid #ececec;
+}
+
+.window {
+  width: 100%;
+}
+
+.jogo {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+#palavra-masked, #vidas {
+  display: flex;  
+}
+
+h1 {
+  font-family: 'Staatliches', cursive;
+  font-size: 70px;
+  margin: 0px;
+  color: #ececec;
+  text-align: center;
+}
+
+#dados {
+  text-align: end;
+  padding-bottom: 10px;
+  font-size: 14px;
+  color: #ececec;
+  font-family: 'Roboto', sans-serif;
+  margin: 10px 0px;
+}
+
+#componentes {
+  margin: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #ececec;
+  font-family: 'Roboto', sans-serif;
+}
+p, #tema, label {
+  padding-bottom: 5px;
+  font-size: 16px;
+  color: #ececec;
+  font-family: 'Roboto', sans-serif;
+}
+#letras-restantes, #contador {
+  font-size: 14px;
+}
+
+#texto-ajuda {
+  font-size: 16px;
+  color: #ececec;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 30px;
+}
+
+#teclado {
+  padding: 5px;
+  margin: 10px 0 25px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn-teclado {
+  margin: 5px;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #242424;
+  font-size: 20px;
+  color: #ececec;
+  border: 1px solid #ececec;
+  box-shadow: 3px 3px 1px #3b3b3b;
+
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.btn-teclado:hover {
+  cursor: pointer;
+  transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgb(109, 109, 109,0.2);
+}
+.btn-teclado:active {
+  transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgb(109, 109, 109,0.2);
 }
 
 .letra {
-  border: 2px solid black;
-  font-size: 20px;
+  width: 20px;
+  color: #ececec;
+    font-size: 20px;
+    text-transform: uppercase;
+    text-align: center;
+  border: 1px solid #ececec;
+  border-radius: 8px;
   padding: 10px;
-  margin-left: 10px;
+  margin: 0 10px 10px 0;
+}
+
+.direita {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+#letra-tentativa {
+  background-color: #1d1e1f;
+  border: 1px solid #ececec;
+  margin: 0 10px;
+  border-radius: 5px;
+  height: 30px;
+  color: #ececec;
+  font-size: 14px;
+  padding: 0;
+}
+
+#btn-tentar {
+  background-color: #69c069;
+  width: 80px;
+  height: 30px;
+  border: 1px solid #ececec;
+  border-radius: 5px;
+  font-size: 14px;
+}
+#btn-tentar:hover {
+  cursor: pointer;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgb(109, 109, 109,0.2);
+}
+#btn-tentar:active {
+  transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgb(109, 109, 109,0.2);
+}
+
+#ranking-btn, #novo-jogo {
+  background-color: #242424;
+  font-size: 14px;
+  color: #ececec;
+  margin-bottom: 15px;
+  font-family: 'Roboto', sans-serif;
+  border: 1px solid #ececec;
+  width: 150px;
+  height: 30px;
+  border-radius: 5px;
+}
+#ranking-btn:hover, #novo-jogo:hover {
+  cursor: pointer;
+  transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgb(109, 109, 109,0.2);
+}
+
+#ranking-btn:active, #novo-jogo:active {
+  transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgb(109, 109, 109,0.2);
 }
 
 .vida-item {
@@ -22,6 +199,50 @@
   width: 100px;
 }
 
-main > div {
-  margin-bottom: 20px;
-}
+@media (min-width: 801px) and (max-width: 1200px) {
+  body {
+    padding: 20px;
+  }
+  .window {
+      width: 100%;
+  }
+  #palavra-masked {
+    flex-wrap: wrap;
+  }
+
+
+  }
+@media (max-width: 800px) {
+  html {
+    display: table;
+  }
+      body{
+          width: 100%;
+          padding: 20px;
+          display: table-cell;
+      }
+      .window {
+          width: 100%;
+          flex-direction: column;
+      }
+      .jogo {
+          flex-direction: column;
+      }
+      .direita {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+      #palavra-masked {
+        flex-wrap: wrap;
+      }
+      #vidas {
+        margin-bottom: 20px;
+      }
+  }
+  
+@media (min-width: 1201px){
+  .container {
+    width: 1000px;
+  }
+  }
