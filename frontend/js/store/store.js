@@ -21,6 +21,8 @@ export default class Store {
 
         localStorage.setItem('progresso', JSON.stringify(state));
 
+        localStorage.setItem('ranking', JSON.stringify(state.ranking));
+
         if (key === 'tempo') {
           this.events.publish('tempoChange', state);
         }
