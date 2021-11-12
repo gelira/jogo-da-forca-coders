@@ -21,8 +21,17 @@ export default class Store {
 
         localStorage.setItem('progresso', JSON.stringify(state));
 
+        if (state.ranking) {
+          if (state.ranking.length > 0) {
+            localStorage.setItem('ranking', JSON.stringify(state.ranking));
+          }
+        }
+
         if (key === 'tempo') {
           this.events.publish('tempoChange', state);
+        }
+        else if (['show_modal', 'modal_title'].includes(key)) {
+          this.events.publish('modalChange', state);
         }
         else {
           this.events.publish('stateChange', state);

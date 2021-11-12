@@ -10,7 +10,8 @@ export default class Palavra extends Component {
   }
 
   showDica() {
-    this.elementDica.innerHTML = this.store.state.dica;
+    const { dica } = this.store.state;
+    this.elementDica.innerHTML = dica;
   }
 
   renderPalavraMasked() {

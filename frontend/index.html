@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,17 +25,15 @@
         <h1>Jogo da Forca</h1>
       </div>
       <div>
-      <div id="ranking">
-        <button id="ranking-btn"> Mostrar Ranking </button>
-        <div id="ranking-container" class="hidden">
+        <div id="ranking">
+          <button id="ranking-btn">Mostrar Ranking</button>
+          <div id="game">
+            <div id="dados">
+              <div>Nome: <span id="nome"></span></div>
+              <div>Tempo de Jogo: <span id="contador"></span></div>
+            </div>
+          </div>
         </div>
-        <div id="game">
-          <div id="dados" class="">
-            <div>Nome: <span id="nome-view">Denadai</span></div>
-            <div><span id="contador"></span></div>
-          </div>
-          </div>
-      </div>
       </div>
     </header>
     <main class="window">
@@ -50,11 +47,10 @@
           </div>
         </section>
         <section class="direita">
-          <img class="vida-item" id="vidas" src="img/forca1.jpg">   <!-- tem que retirar essa tag img quando ajustar o JS com as novas imagens -->
-            <div id="vidas"></div>
+          <img class="vida-item" id="vidas">   <!-- tem que retirar essa tag img quando ajustar o JS com as novas imagens -->
 
-            <!-- Atenção! Mais um display none colocado pra aparecer só quando o JS pedir -->
-            <p id="resultado" style="display: none;"></p>
+          <!-- Atenção! Mais um display none colocado pra aparecer só quando o JS pedir -->
+          <p id="resultado" style="display: none;"></p>
         </section>
       </article>
     </main>
@@ -62,34 +58,7 @@
       <div id="tentativas-container" class="">
 
         <label for="letra-tentativa" id="texto-ajuda">Selecione uma letra:</label>
-        <div id="teclado">
-          <button type="button" id="letterA" class="btn-teclado">A</button>
-          <button type="button" id="letterB" class="btn-teclado">B</button>
-          <button type="button" id="letterC" class="btn-teclado">C</button>
-          <button type="button" id="letterD" class="btn-teclado">D</button>
-          <button type="button" id="letterE" class="btn-teclado">E</button>
-          <button type="button" id="letterF" class="btn-teclado">F</button>
-          <button type="button" id="letterG" class="btn-teclado">G</button>
-          <button type="button" id="letterH" class="btn-teclado">H</button>
-          <button type="button" id="letterI" class="btn-teclado">I</button>
-          <button type="button" id="letterJ" class="btn-teclado">J</button>
-          <button type="button" id="letterK" class="btn-teclado">K</button>
-          <button type="button" id="letterL" class="btn-teclado">L</button>
-          <button type="button" id="letterM" class="btn-teclado">M</button>
-          <button type="button" id="letterN" class="btn-teclado">N</button>
-          <button type="button" id="letterO" class="btn-teclado">O</button>
-          <button type="button" id="letterP" class="btn-teclado">P</button>
-          <button type="button" id="letterQ" class="btn-teclado">Q</button>
-          <button type="button" id="letterR" class="btn-teclado">R</button>
-          <button type="button" id="letterS" class="btn-teclado">S</button>
-          <button type="button" id="letterT" class="btn-teclado">T</button>
-          <button type="button" id="letterU" class="btn-teclado">U</button>
-          <button type="button" id="letterV" class="btn-teclado">V</button>
-          <button type="button" id="letterW" class="btn-teclado">W</button>
-          <button type="button" id="letterX" class="btn-teclado">X</button>
-          <button type="button" id="letterY" class="btn-teclado">Y</button>
-          <button type="button" id="letterZ" class="btn-teclado">Z</button>
-        </div>
+        <div id="teclado"></div>
       </div>
       <div>
       <label for="letra-tentativa">Ou tente acertar a palavra inteira:</label>
@@ -102,24 +71,18 @@
   <div id="resultado" class="hidden"></div>
 
   <!-- Deixei esses abaixo invisíveis pois acho q deve ser mostrado quando acabar a partida, precisa conferir se há um event listener para ativar o display deles -->
-  <div id="modal-result" class="modal-container" style="display: none;">
+  <div id="modal" class="modal-container">
     <div class="modal">
-      <button class="fechar">x</button>
-      <h3 class="subtitle">Resultado da Partida</h3>
+      <button id="modal-close">X</button>
+      <h3 id="modal-title"></h3>
+      <div id="modal-body"></div>
     </div>
   </div>
-  <div id="novo-container" class="hidden" style="display: none;">
-    <label for="name">
-      Nome:
-      <input type="text" id="name">
-    </label>
-  </div>
-  
+
   </main>
   <footer>
     <p id="componentes">Por Bruno Matta, Geraldo Eloi, Julia Miranda, Marcus Vinicius e Paulo Denadai.</p>
   </footer>
   <script type="module" src="js/main.js"></script>
 </body>
-
 </html>

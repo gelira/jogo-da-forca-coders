@@ -3,8 +3,14 @@ import { ACTIONS, MUTATIONS } from './types.js';
 export default {
   async [ACTIONS.FETCH_PALAVRA] (context) {
     const response = await fetch('http://localhost:3000/palavra')
-    const data = await response.json();
-    context.commit(MUTATIONS.SET_PALAVRA, data);
+    const { city, country } = await response.json();
+    
+    context.commit(MUTATIONS.SET_PALAVRA, {
+      dica: city,
+      palavra: country,
+    });
+
+    context.dispatch(ACTIONS.PARAR_TEMPO);
   },
 
   [ACTIONS.TENTATIVA] (context, payload) {
@@ -15,11 +21,24 @@ export default {
       const item = palavra_masked[i];
       if (item.letra_cleaned === letra) {
         context.commit(MUTATIONS.ACERTO_TENTATIVA, { letra });
-        return;
+        return true;
       }
     }
 
+    context.commit(MUTATIONS.ERRO_TENTATIVA, { letra });
+    return false;
+  },
+
+  [ACTIONS.TENTATIVA_TOTAL] (context, payload) {
+    const { palavra } = payload;
+
+    if (context.state.palavra_cleaned === palavra) {
+      context.commit(MUTATIONS.ACERTO_PALAVRA);
+      return true;
+    }
+ 
     context.commit(MUTATIONS.ERRO_TENTATIVA);
+    return false;
   },
 
   [ACTIONS.INICIAR_TEMPO] (context, payload = {}) {
@@ -54,6 +73,8 @@ export default {
       tempo,
       palavra_masked,
       letras_restantes,
+      nome,
+      tentativas,
     } = JSON.parse(progresso);
 
     context.commit(MUTATIONS.DEFINIR_PROGRESSO, {
@@ -63,12 +84,32 @@ export default {
       tempo,
       palavra_masked,
       letras_restantes,
+      nome,
+      tentativas,
     });
 
-    return true;
+    if (palavra_masked.length > 0) {
+      context.dispatch(ACTIONS.INICIAR_TEMPO);
+    }
+  },
+
+  [ACTIONS.CARREGAR_RANKING] (context) {
+    const ranking = localStorage.getItem('ranking');
+    if (ranking) {
+      context.commit(MUTATIONS.DEFINIR_RANKING, {
+        ranking: JSON.parse(ranking),
+      });
+    }
   },
 
   [ACTIONS.LIMPAR_PROGRESSO] () {
     localStorage.removeItem('progresso');
+  },
+
+  [ACTIONS.CLOSE_MODAL] (context) {
+    context.commit(MUTATIONS.DEFINIR_MODAL, {
+      show_modal: false,
+      modal_title: '',
+    });
   },
 };

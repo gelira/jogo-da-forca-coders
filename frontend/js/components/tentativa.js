@@ -5,25 +5,40 @@ export default class Tentativa extends Component {
   constructor() {
     super();
 
+    this.alfabeto = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
     this.elementVidas = document.querySelector('#vidas');
     this.elementLetraTentativa = document.querySelector('#letra-tentativa');
     this.elementContainer = document.querySelector('#tentativas-container');
+    this.elementResultado = document.querySelector('#resultado');
+    this.elementGame = document.querySelector('#game');
+    this.elementTeclado = document.querySelector('#teclado');
 
     document.querySelector('#btn-tentar')
       .addEventListener('click', () => this.tentar());
+    
+    this.renderTeclado();
   }
 
-  tentar() {
+  tentar(letra) {
     const { vidas, letras_restantes } = this.store.state;
     if (vidas <= 0 || letras_restantes <= 0) {
       return;
     }
-
-    const letra = this.elementLetraTentativa.value.trim().toUpperCase();
     
-    if (letra.length === 1 && 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.includes(letra)) {
-      this.store.dispatch(ACTIONS.TENTATIVA, { letra });
-    } 
+    if (!letra) {
+      letra = this.elementLetraTentativa.value.trim();
+      letra = letra.toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    }
+
+    if (letra.length === 1) {
+      if (this.alfabeto.includes(letra)) {
+        this.store.dispatch(ACTIONS.TENTATIVA, { letra });
+      }
+    }
+    else {
+      this.store.dispatch(ACTIONS.TENTATIVA_TOTAL, { palavra: letra });
+    }
 
     this.elementLetraTentativa.value = '';
   }
@@ -40,25 +55,47 @@ export default class Tentativa extends Component {
     const { vidas } = this.store.state;
 
     this.elementVidas.innerHTML = '';
+    this.elementVidas.setAttribute('src', `img/vidas${vidas}.jpg`);
+  }
 
-    if (vidas > 0) {
-      for (let i = 0; i < vidas; i ++) {
-        const img = document.createElement('img');
-        
-        img.setAttribute('src', 'img/vida.png');
-        img.classList.add('vida-item');
-  
-        this.elementVidas.appendChild(img);
-      }
-      return;
+  renderTeclado() {
+    for (let i = 0; i < this.alfabeto.length; i ++) {
+      const letra = this.alfabeto[i];
+      const btn = document.createElement('button');
+
+      btn.id = `letra${letra}`;
+      btn.dataset.letra = letra;
+      btn.innerHTML = letra;
+      btn.classList.add('btn-teclado');
+
+      this.elementTeclado.appendChild(btn);
+
+      btn.addEventListener('click', () => {
+        this.tentar(btn.dataset.letra);
+      });
     }
+  }
 
-    const img = document.createElement('img');
+  updateTeclado() {
+    const { tentativas } = this.store.state;
+    
+    for (let i = 0; i < this.alfabeto.length; i ++) {
+      const letra = this.alfabeto[i];
+
+      const btn = document.querySelector(`#letra${letra}`);
+
+      if (!tentativas.hasOwnProperty(letra)) {
+        btn.disabled = false;
+        btn.classList.remove('btn-erro');
+        btn.classList.remove('btn-acerto');
+        continue;
+      }
+
+      const tentativa = tentativas[letra];
       
-    img.setAttribute('src', 'img/game-over.png');
-    img.classList.add('game-over-item');
-
-    this.elementVidas.appendChild(img);
+      btn.classList.add(tentativa ? 'btn-acerto' : 'btn-erro');
+      btn.disabled = true;
+    }
   }
 
   render() {
@@ -71,5 +108,6 @@ export default class Tentativa extends Component {
 
     this.showContainer();
     this.renderVidas();
+    this.updateTeclado();
   }
 }

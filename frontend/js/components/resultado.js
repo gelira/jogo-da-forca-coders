@@ -1,22 +1,27 @@
 import Component from '../lib/component.js';
-import { ACTIONS } from '../store/types.js';
+import { ACTIONS, MUTATIONS } from '../store/types.js';
 
 export default class Resultado extends Component {
   constructor() {
     super();
   
     this.elementResultado = document.querySelector('#resultado');
-    this.elementNovoJogo = document.querySelector('#novo-jogo');
+    this.elementNome = document.querySelector('#nome');
+    this.elementModalBody = document.querySelector('#modal-body');
 
-    this.elementNovoJogo.addEventListener('click', () => this.novoJogo());
+    document.querySelector('#novo-jogo')
+      .addEventListener('click', () => this.novoJogo());
   }
 
   novoJogo() {
-    const progresso = this.store.dispatch(ACTIONS.CARREGAR_PROGRESSO);
+    const { nome } = this.store.state;
 
-    if (progresso) {
-      this.store.dispatch(ACTIONS.INICIAR_TEMPO);
-      return;
+    if (!nome) {
+      const nome = prompt('Digite seu nome:');
+      if (!nome) {
+        return;
+      }
+      this.store.commit(MUTATIONS.DEFINIR_NOME, { nome });
     }
 
     this.store.dispatch(ACTIONS.FETCH_PALAVRA)
@@ -25,34 +30,23 @@ export default class Resultado extends Component {
       });
   }
 
-  showResultado(mensagem) {
-    this.elementNovoJogo.classList.remove('hidden');
-    this.elementResultado.classList.remove('hidden');
-    this.elementResultado.innerHTML = mensagem;
-  }
-
-  hideResultado() {
-    this.elementNovoJogo.classList.add('hidden');
-    this.elementResultado.classList.add('hidden');
-    this.elementResultado.innerHTML = '';
-  }
-
   render() {
     const { 
       vidas, 
       palavra,
       letras_restantes,
+      nome,
     } = this.store.state;
 
     let fimDeJogo = false;
 
     if (vidas === 0) {
-      this.showResultado(`Você perdeu!! A palavra é: ${palavra}`);
+      this.elementModalBody.innerHTML = `A palavra certa era: ${palavra}`; 
       fimDeJogo = true;
     }
 
     if (letras_restantes === 0) {
-      this.showResultado(`Parabéns!! A palavra é: ${palavra}`);
+      this.elementModalBody.innerHTML = `Parabéns!! A palavra é: ${palavra}`; 
       fimDeJogo = true;
     }
 
@@ -62,6 +56,6 @@ export default class Resultado extends Component {
       return;
     }
 
-    this.hideResultado();
+    this.elementNome.innerHTML = nome;
   }
 }

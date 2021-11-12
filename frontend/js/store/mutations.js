@@ -28,19 +28,40 @@ export default {
       });
     }
 
-    state.vidas = 3;
+    state.letras_restantes = letras_restantes;
+    state.vidas = 6;
     state.palavra = palavra;
     state.dica = dica;
     state.palavra_masked = palavra_masked;
-    state.letras_restantes = letras_restantes;
+    state.palavra_cleaned = palavra_cleaned;
+    state.tentativas = {};
   },
 
-  [MUTATIONS.ERRO_TENTATIVA] (state) {
-    state.vidas = state.vidas - 1;
+  [MUTATIONS.ERRO_TENTATIVA] (state, payload = {}) {
+    const { letra } = payload;
+
+    if (letra) {
+      const tentativas = { ...state.tentativas };
+      tentativas[letra] = false;
+      state.tentativas = tentativas;
+    }
+
+    const vidas = state.vidas - 1;
+
+    if (vidas === 0) {
+      state.show_modal = true;
+      state.modal_title = 'GAME OVER';
+      state.nome = '';
+    }
+
+    state.vidas = vidas;
   },
 
   [MUTATIONS.ACERTO_TENTATIVA] (state, payload) {
     const { letra } = payload;
+
+    const tentativas = { ...state.tentativas };
+    tentativas[letra] = true;
 
     let lr = state.letras_restantes;
     state.palavra_masked = state.palavra_masked.map(item => {
@@ -50,7 +71,39 @@ export default {
       }
       return item;
     });
+
     state.letras_restantes = lr;
+    state.tentativas = tentativas;
+
+    if (lr === 0) {
+      state.show_modal = true;
+      state.modal_title = 'YOU WIN';
+
+      const { nome, tempo, ranking } = state;
+
+      if (ranking.some(e => e.nome === nome && e.tempo === tempo)) {
+        return;
+      }
+
+      const new_ranking = [...ranking, { nome, tempo }].sort((a, b) => {
+        if (a.tempo > b.tempo) {
+          return 1
+        }
+        if (b.tempo > a.tempo) {
+          return -1;
+        }
+        if (a.nome > b.nome) {
+          return 1
+        }
+        if (b.nome > a.nome) {
+          return -1;
+        }
+        return 0;
+      });
+
+      state.ranking = new_ranking;  
+      state.nome = '';
+    }
   },
 
   [MUTATIONS.DEFINIR_TEMPO_INTERVAL] (state, payload) {
@@ -73,6 +126,8 @@ export default {
       tempo,
       palavra_masked,
       letras_restantes,
+      nome,
+      tentativas,
     } = payload;
 
     state.vidas = vidas;
@@ -81,5 +136,59 @@ export default {
     state.tempo = tempo;
     state.palavra_masked = palavra_masked;
     state.letras_restantes = letras_restantes;
+    state.nome = nome;
+    state.tentativas = tentativas;
+  },
+
+  [MUTATIONS.ACERTO_PALAVRA] (state) {
+    state.palavra_masked = state.palavra_masked.map(i => ({ ...i, masked: false }));
+    state.letras_restantes = 0;
+
+    state.show_modal = true;
+    state.modal_title = 'YOU WIN';
+
+    const { nome, tempo, ranking } = state;
+
+    if (ranking.some(e => e.nome === nome && e.tempo === tempo)) {
+      return;
+    }
+
+    const new_ranking = [...ranking, { nome, tempo }].sort((a, b) => {
+      if (a.tempo > b.tempo) {
+        return 1
+      }
+      if (b.tempo > a.tempo) {
+        return -1;
+      }
+      if (a.nome > b.nome) {
+        return 1
+      }
+      if (b.nome > a.nome) {
+        return -1;
+      }
+      return 0;
+    });
+
+    state.ranking = new_ranking;  
+    state.nome = '';
+  },
+
+  [MUTATIONS.DEFINIR_NOME] (state, payload) {
+    const { nome } = payload;
+    state.nome = nome;
+  },
+
+  [MUTATIONS.DEFINIR_MODAL] (state, payload = {}) {
+    const {
+      show_modal = false,
+      modal_title = '',
+    } = payload;
+
+    state.show_modal = show_modal;
+    state.modal_title = modal_title;
+  },
+
+  [MUTATIONS.DEFINIR_RANKING] (state, payload) {
+    state.ranking = payload.ranking;
   },
 };
