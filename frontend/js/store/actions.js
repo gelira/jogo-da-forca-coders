@@ -64,6 +64,13 @@ export default {
   },
 
   [ACTIONS.CARREGAR_PROGRESSO] (context) {
+    const ranking = localStorage.getItem('ranking');
+    if (ranking) {
+      context.commit(MUTATIONS.DEFINIR_RANKING, {
+        ranking: JSON.parse(ranking),
+      });
+    }
+
     const progresso = localStorage.getItem('progresso');
     if (!progresso) {
       return false;
@@ -78,7 +85,6 @@ export default {
       letras_restantes,
       nome,
       tentativas,
-      ranking,
     } = JSON.parse(progresso);
 
     context.commit(MUTATIONS.DEFINIR_PROGRESSO, {
@@ -90,7 +96,6 @@ export default {
       letras_restantes,
       nome,
       tentativas,
-      ranking,
     });
 
     if (palavra_masked.length > 0) {
