@@ -100,5 +100,6 @@ export default {
 
   [MUTATIONS.ACERTO_PALAVRA] (state) {
     state.palavra_masked = state.palavra_masked.map(i => ({ ...i, masked: false }));
+    state.letras_restantes = 0;
   },
 };
