@@ -5,6 +5,8 @@ export default class Tentativa extends Component {
   constructor() {
     super();
 
+    this.alfabeto = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
     this.elementVidas = document.querySelector('#vidas');
     this.elementLetraTentativa = document.querySelector('#letra-tentativa');
     this.elementContainer = document.querySelector('#tentativas-container');
@@ -26,7 +28,7 @@ export default class Tentativa extends Component {
 
     const letra = button.innerHTML.trim().toUpperCase();
     
-    if (letra.length === 1 && 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.includes(letra)) {
+    if (letra.length === 1 && this.alfabeto.includes(letra)) {
       if(this.store.dispatch(ACTIONS.TENTATIVA, { letra })) {
         document.getElementById(button.id).setAttribute("style", "background-color: #56ff56;");
         document.getElementById(button.id).setAttribute("disabled", "disabled");
@@ -79,9 +81,8 @@ export default class Tentativa extends Component {
   }
 
   renderTeclado() {
-    const alfabeto = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    for (let i = 0; i < alfabeto.length; i ++) {
-      const letra = alfabeto[i];
+    for (let i = 0; i < this.alfabeto.length; i ++) {
+      const letra = this.alfabeto[i];
       const btn = document.createElement('button');
 
       btn.id = `letra${letra}`;
