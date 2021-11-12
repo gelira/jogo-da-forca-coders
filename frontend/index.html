@@ -73,10 +73,11 @@
   <div id="resultado" class="hidden"></div>
 
   <!-- Deixei esses abaixo invisíveis pois acho q deve ser mostrado quando acabar a partida, precisa conferir se há um event listener para ativar o display deles -->
-  <div id="modal-result" class="modal-container" style="display: none;">
+  <div id="modal" class="modal-container">
     <div class="modal">
-      <button class="fechar">x</button>
-      <h3 class="subtitle">Resultado da Partida</h3>
+      <button id="modal-close">X</button>
+      <h3 id="modal-title"></h3>
+      <div id="modal-body"></div>
     </div>
   </div>
   

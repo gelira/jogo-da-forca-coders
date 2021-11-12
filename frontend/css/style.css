@@ -269,19 +269,30 @@ main > div {
   align-items: center;
 }
 
-.modal-container.mostrar {
+.modal-container.modal-show {
   display: flex;
 }
 
 .modal {
-  background: white;
-  width: 60%;
+  background: #1d1e1f;
   min-width: 300px;
-  height: 460px;
   padding: 40px;
-  border: 10px solid #988b7a;
-  box-shadow: 0 0 0 10px white;
   position: relative;
+  border-radius: 20px;
+  border: 1px solid #ececec;
+}
+
+#modal-title {
+  font-family: 'Staatliches', cursive;
+  font-size: 70px;
+  margin: 0px;
+  color: #ececec;
+  text-align: center;
+}
+
+#modal-body {
+  color: #ececec;
+  font-family: 'Roboto', cursive;
 }
 
 @keyframes modal {
@@ -295,22 +306,22 @@ main > div {
   }
 }
 
-.mostrar .modal {
-  animation: modal .3s;
+.modal-show .modal {
+  animation: modal .5s;
 }
 
-.fechar {
+#modal-close {
   position: absolute;
   font-size: 1.2em;
-  top: -30px;
-  right: -30px;
-  width: 50px;
-  height: 50px;
+  top: -15px;
+  right: -15px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   border: 4px solid white;
   background: #988b7a;
   color: white;
-  font-family: "PT Mono", monospace;
+  font-family: 'Roboto', sans-serif;
   cursor: pointer;
   box-shadow: 0 4px 4px 0 rgba(0,0,0,.3);
 }

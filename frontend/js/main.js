@@ -3,6 +3,7 @@ import Resultado from './components/resultado.js';
 import Tentativa from './components/tentativa.js';
 import Contador from './components/contador.js';
 import Ranking from './components/ranking.js';
+import Modal from './components/modal.js';
 
 window.addEventListener('load', () => {
   const palavra = new Palavra();
@@ -10,6 +11,7 @@ window.addEventListener('load', () => {
   const resultado = new Resultado();
   const contador = new Contador();
   const ranking = new Ranking();
+  const modal = new Modal();
 
   //resultado.novoJogo();
 
@@ -18,26 +20,5 @@ window.addEventListener('load', () => {
   tentativa.render();
   resultado.render();
   ranking.render();
+  modal.render();
 });
-
-
-function iniciaModal(modalID) {
-  
-      const modal = document.getElementById(modalID);
-      if(modal) {
-          modal.classList.add('mostrar');
-          modal.addEventListener('click', (e) => {
-              if(e.target.id == modalID || e.target.className == 'fechar') {
-                  modal.classList.remove('mostrar');
-                  
-              }
-          });
-      }
-  }
-
-//iniciaModal('modal-result');
-
-
-
-//const logo = document.querySelector('.logo');
-  //  logo.addEventListener('click', () => iniciaModal('modal-result'));
