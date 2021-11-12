@@ -29,7 +29,7 @@ export default {
     }
 
     state.letras_restantes = letras_restantes;
-    state.vidas = 3;
+    state.vidas = 6;
     state.palavra = palavra;
     state.dica = dica;
     state.palavra_masked = palavra_masked;

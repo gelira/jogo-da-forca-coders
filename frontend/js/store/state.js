@@ -1,5 +1,5 @@
 export default {
-  vidas: 3,
+  vidas: 6,
   palavra: '',
   dica: '',
 
