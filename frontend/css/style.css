@@ -333,3 +333,11 @@ main > div {
 .btn-erro {
   background-color: #ff8a8a;
 }
+
+table {
+  margin-left: 20px;
+}
+
+td, th {
+  padding: 10px;
+}

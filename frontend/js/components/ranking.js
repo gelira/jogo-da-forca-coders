@@ -1,117 +1,78 @@
 import Component from '../lib/component.js';
+import { MUTATIONS } from '../store/types.js';
 
 export default class Ranking extends Component {
   constructor() {
     super();
-    
-    const self = this;
 
-    this.store.state.ranking = (localStorage.getItem('ranking') === null)? [] : JSON.parse(localStorage.getItem('ranking')) ;
+    this.elementModalBody = document.querySelector('#modal-body');
 
-    self.elementContainer = document.getElementById('ranking-container');
-    self.elementBtnRankingShow = document.getElementById('ranking-btn');
-
-    self.elementBtnRankingShow.addEventListener('click', () => self.showRanking());
+    document.querySelector('#ranking-btn')
+      .addEventListener('click', () => this.showRanking());
   }
 
-  register(nome, tempo) {
-    this.store.state.ranking.push(`{"nome":"${nome}", "tempo":"${tempo}"}`);
-    localStorage.setItem('ranking', JSON.stringify(this.store.state.ranking));
+  createHeader() {
+    const tr = document.createElement('tr');
+    
+    const thN = document.createElement('th');
+    thN.innerHTML = '#';
 
-    this.store.state.ranking.sort( (a, b) => {
-        let aa = JSON.parse(a);
-        let bb = JSON.parse(b);
-        return (aa.tempo > bb.tempo)? 1 : ((bb.tempo > aa.tempo)? -1 : 0);
-    });
+    const thNome = document.createElement('th');
+    thNome.innerHTML = 'Nome';
+
+    const thTempo = document.createElement('th');
+    thTempo.innerHTML = 'Tempo';
+
+    tr.appendChild(thN);
+    tr.appendChild(thNome);
+    tr.appendChild(thTempo);
+
+    return tr;
+  }
+
+  formatTempo(tempo) {
+    const segundos = tempo % 60;
+    const minutos = (tempo - segundos) / 60;
+
+    return `${minutos.toString().padStart(2, '0')}:${segundos.toString().padStart(2, '0')}`
+  }
+
+  createRankingLine(item, index) {
+    const tr = document.createElement('tr');
+    
+    const tdN = document.createElement('td');
+    tdN.innerHTML = index;
+
+    const tdNome = document.createElement('td');
+    tdNome.innerHTML = item.nome;
+
+    const tdTempo = document.createElement('td');
+    tdTempo.innerHTML = this.formatTempo(item.tempo);
+
+    tr.appendChild(tdN);
+    tr.appendChild(tdNome);
+    tr.appendChild(tdTempo);
+
+    return tr;
   }
 
   showRanking() {
-    if(!this.elementContainer.classList.contains('hidden')){
-      this.elementContainer.innerHTML = "";
-      this.elementContainer.classList.toggle('hidden');
-      this.elementBtnRankingShow.innerHTML = "Mostrar Ranking";
-      return;
+    const { ranking } = this.store.state;
+
+    this.elementModalBody.innerHTML = '';
+
+    const table = document.createElement('table');
+    table.appendChild(this.createHeader());
+    
+    for (let i = 0; i < ranking.length; i ++) {
+      table.appendChild(this.createRankingLine(ranking[i], i + 1));
     }
 
-    this.store.state.ranking.sort( (a, b) => {
-      let aa = JSON.parse(a);
-      let bb = JSON.parse(b);
-      return (aa.tempo > bb.tempo)? 1 : ((bb.tempo > aa.tempo)? -1 : 0);
+    this.elementModalBody.appendChild(table);
+
+    this.store.commit(MUTATIONS.DEFINIR_MODAL, {
+      show_modal: true,
+      modal_title: 'Ranking',
     });
-
-    let table = document.createElement("table");
-    let tableBody = document.createElement("tbody");
-    let tableHead = document.createElement("thead");
-
-    if( this.store.state.ranking.length > 0 ) {
-      let tr = document.createElement("tr");
-
-      let th = document.createElement("th");
-      th.appendChild(document.createTextNode(`POSIÇÃO`));
-      tr.appendChild(th);
-
-      let th1 = document.createElement("th");
-      th1.appendChild(document.createTextNode(`NOME`));
-      tr.appendChild(th1);
-
-      let th2 = document.createElement("th");
-      th2.appendChild(document.createTextNode(`TEMPO`));
-      tr.appendChild(th2);
-
-      tableHead.appendChild(tr);
-
-      for (let i=0; i<this.store.state.ranking.length; i++) {
-        let dados = JSON.parse(this.store.state.ranking[i]);
-
-        let tr = document.createElement("tr");
-
-        let td = document.createElement("td");
-        td.appendChild(document.createTextNode(`${i+1}`));
-        tr.appendChild(td);
-
-        let td1 = document.createElement("td");
-        td1.appendChild(document.createTextNode(`${dados.nome}`));
-        tr.appendChild(td1);
-
-        let td2 = document.createElement("td");
-        td2.appendChild(document.createTextNode(`${dados.tempo}s`));
-        tr.appendChild(td2);
-
-        tableBody.appendChild(tr);
-      }
-    } else {
-      let tr = document.createElement("tr");
-
-      let td1 = document.createElement("td");
-      td1.appendChild(document.createTextNode(`Nenhum resultado localizado`));
-      tr.appendChild(td1);
-
-      tableBody.appendChild(tr);
-    }
-
-    table.appendChild(tableHead);
-    table.appendChild(tableBody);
-    table.setAttribute("border", "1");
-    
-    this.elementContainer.appendChild(table);
-    this.elementContainer.classList.toggle('hidden');
-    this.elementBtnRankingShow.innerHTML = "Ocultar Ranking";
-  }
-
-  render() {
-    const { 
-      nome,
-      tempo,
-      letras_restantes,
-    } = this.store.state;
-
-    if (letras_restantes == 0) {
-      this.register(nome, tempo);
-      if(!this.elementContainer.classList.contains('hidden')){
-        this.showRanking();
-        this.showRanking();
-      }
-    }
-    
   }
 }

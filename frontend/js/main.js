@@ -10,6 +10,7 @@ import { ACTIONS } from './store/types.js';
 
 window.addEventListener('load', () => {
   store.dispatch(ACTIONS.CARREGAR_PROGRESSO);
+  store.dispatch(ACTIONS.CARREGAR_RANKING);
 
   const palavra = new Palavra();
   const tentativa = new Tentativa();
