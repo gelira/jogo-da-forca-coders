@@ -55,20 +55,7 @@ export default class Tentativa extends Component {
     const { vidas } = this.store.state;
 
     this.elementVidas.innerHTML = '';
-
-    if (vidas > 0) {
-      for (let i = 0; i < vidas; i ++) {
-        const img = document.createElement('img');
-        
-        img.setAttribute('src', 'img/vida.png');
-        img.classList.add('vida-item');
-  
-        this.elementVidas.appendChild(img);
-      }
-      return;
-    }
-
-    this.elementGame.classList.add('hidden');
+    this.elementVidas.setAttribute('src', `img/vidas${vidas}.jpg`);
   }
 
   renderTeclado() {
