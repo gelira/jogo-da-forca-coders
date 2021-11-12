@@ -32,10 +32,7 @@ export default {
   [ACTIONS.TENTATIVA_TOTAL] (context, payload) {
     const { palavra } = payload;
 
-    const palavra_cleaned = palavra.trim().toUpperCase()
-      .normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-
-    if (context.state.palavra_cleaned === palavra_cleaned) {
+    if (context.state.palavra_cleaned === palavra) {
       context.commit(MUTATIONS.ACERTO_PALAVRA);
       return true;
     }
@@ -64,13 +61,6 @@ export default {
   },
 
   [ACTIONS.CARREGAR_PROGRESSO] (context) {
-    const ranking = localStorage.getItem('ranking');
-    if (ranking) {
-      context.commit(MUTATIONS.DEFINIR_RANKING, {
-        ranking: JSON.parse(ranking),
-      });
-    }
-
     const progresso = localStorage.getItem('progresso');
     if (!progresso) {
       return false;

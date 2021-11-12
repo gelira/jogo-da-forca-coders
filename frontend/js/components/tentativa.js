@@ -27,7 +27,7 @@ export default class Tentativa extends Component {
     }
     
     if (!letra) {
-      letra = this.elementLetraTentativa.value;
+      letra = this.elementLetraTentativa.value.trim();
       letra = letra.toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
     }
 

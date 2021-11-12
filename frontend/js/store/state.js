@@ -6,6 +6,7 @@ export default {
   tempo: 0,
   tempo_interval: 0,
   palavra_masked: [],
+  palavra_cleaned: '',
   letras_restantes: -1,
   nome: '',
   tentativas: {},
