@@ -34,7 +34,7 @@ export default {
     state.palavra_masked = palavra_masked;
     state.letras_restantes = letras_restantes;
     state.palavra_cleaned = palavra_cleaned;
-    state.status = 0;
+    state.tentativas = {};
   },
 
   [MUTATIONS.ERRO_TENTATIVA] (state, payload = {}) {

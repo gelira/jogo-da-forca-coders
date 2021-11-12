@@ -94,12 +94,16 @@ export default class Tentativa extends Component {
     for (let i = 0; i < this.alfabeto.length; i ++) {
       const letra = this.alfabeto[i];
 
+      const btn = document.querySelector(`#letra${letra}`);
+
       if (!tentativas.hasOwnProperty(letra)) {
+        btn.disabled = false;
+        btn.classList.remove('btn-erro');
+        btn.classList.remove('btn-acerto');
         continue;
       }
 
       const tentativa = tentativas[letra];
-      const btn = document.querySelector(`#letra${letra}`);
       
       btn.classList.add(tentativa ? 'btn-acerto' : 'btn-erro');
       btn.disabled = true;
