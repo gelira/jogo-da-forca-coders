@@ -14,9 +14,9 @@ export default class Resultado extends Component {
   }
 
   novoJogo() {
-    const { nome, tempo } = this.store.state;
+    const { nome } = this.store.state;
 
-    if (!nome && tempo === 0) {
+    if (!nome) {
       const nome = prompt('Digite seu nome:');
       if (!nome) {
         return;
@@ -42,18 +42,11 @@ export default class Resultado extends Component {
 
     if (vidas === 0) {
       this.elementModalBody.innerHTML = `A palavra certa era: ${palavra}`; 
-      this.store.dispatch(ACTIONS.OPEN_MODAL, {
-        modal_title: 'GAME OVER',
-      });
       fimDeJogo = true;
     }
 
     if (letras_restantes === 0) {
-      console.log(this.store.state);
       this.elementModalBody.innerHTML = `Parabéns!! A palavra é: ${palavra}`; 
-      this.store.dispatch(ACTIONS.OPEN_MODAL, {
-        modal_title: 'YOU WIN',
-      });
       fimDeJogo = true;
     }
 
