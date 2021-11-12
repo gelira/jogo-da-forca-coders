@@ -10,4 +10,7 @@ export default {
   nome: '',
   tentativas: {},
   ranking: [],
+
+  show_modal: false,
+  modal_title: '',
 };

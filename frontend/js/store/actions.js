@@ -91,4 +91,19 @@ export default {
   [ACTIONS.LIMPAR_PROGRESSO] () {
     localStorage.removeItem('progresso');
   },
+
+  [ACTIONS.OPEN_MODAL] (context, payload) {
+    const { modal_title } = payload;
+    context.commit(MUTATIONS.DEFINIR_MODAL, {
+      open_modal: true,
+      modal_title,
+    });
+  },
+
+  [ACTIONS.CLOSE_MODAL] (context) {
+    context.commit(MUTATIONS.DEFINIR_MODAL, {
+      open_modal: false,
+      modal_title: '',
+    });
+  },
 };

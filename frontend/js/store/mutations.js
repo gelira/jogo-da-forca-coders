@@ -107,4 +107,14 @@ export default {
     const { nome } = payload;
     state.nome = nome;
   },
+
+  [MUTATIONS.DEFINIR_MODAL] (state, payload = {}) {
+    const {
+      show_modal = false,
+      modal_title = '',
+    } = payload;
+
+    state.show_modal = show_modal;
+    state.modal_title = modal_title;
+  },
 };
