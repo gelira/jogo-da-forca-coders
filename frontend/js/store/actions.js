@@ -85,7 +85,7 @@ export default {
       letras_restantes,
     });
 
-    return true;
+    return palavra_masked.length > 0;
   },
 
   [ACTIONS.LIMPAR_PROGRESSO] () {
