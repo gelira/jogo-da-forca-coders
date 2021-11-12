@@ -28,11 +28,11 @@ export default {
       });
     }
 
+    state.letras_restantes = letras_restantes;
     state.vidas = 3;
     state.palavra = palavra;
     state.dica = dica;
     state.palavra_masked = palavra_masked;
-    state.letras_restantes = letras_restantes;
     state.palavra_cleaned = palavra_cleaned;
     state.tentativas = {};
   },
