@@ -5,15 +5,18 @@ import Contador from './components/contador.js';
 import Ranking from './components/ranking.js';
 import Modal from './components/modal.js';
 
+import store from './store/index.js';
+import { ACTIONS } from './store/types.js';
+
 window.addEventListener('load', () => {
+  store.dispatch(ACTIONS.CARREGAR_PROGRESSO);
+
   const palavra = new Palavra();
   const tentativa = new Tentativa();
   const resultado = new Resultado();
   const contador = new Contador();
   const ranking = new Ranking();
   const modal = new Modal();
-
-  //resultado.novoJogo();
 
   contador.render();
   palavra.render();
