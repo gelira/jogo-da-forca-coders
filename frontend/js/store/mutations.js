@@ -37,12 +37,23 @@ export default {
     state.status = 0;
   },
 
-  [MUTATIONS.ERRO_TENTATIVA] (state) {
+  [MUTATIONS.ERRO_TENTATIVA] (state, payload = {}) {
+    const { letra } = payload;
+
+    if (letra) {
+      const tentativas = { ...state.tentativas };
+      tentativas[letra] = false;
+      state.tentativas = tentativas;
+    }
+
     state.vidas = state.vidas - 1;
   },
 
   [MUTATIONS.ACERTO_TENTATIVA] (state, payload) {
     const { letra } = payload;
+
+    const tentativas = { ...state.tentativas };
+    tentativas[letra] = true;
 
     let lr = state.letras_restantes;
     state.palavra_masked = state.palavra_masked.map(item => {
@@ -52,7 +63,9 @@ export default {
       }
       return item;
     });
+
     state.letras_restantes = lr;
+    state.tentativas = tentativas;
   },
 
   [MUTATIONS.DEFINIR_TEMPO_INTERVAL] (state, payload) {

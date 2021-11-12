@@ -23,7 +23,7 @@ export default {
       }
     }
 
-    context.commit(MUTATIONS.ERRO_TENTATIVA);
+    context.commit(MUTATIONS.ERRO_TENTATIVA, { letra });
     return false;
   },
 
