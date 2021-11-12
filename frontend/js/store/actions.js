@@ -91,7 +91,9 @@ export default {
       ranking,
     });
 
-    return palavra_masked.length > 0;
+    if (palavra_masked.length > 0) {
+      context.dispatch(ACTIONS.INICIAR_TEMPO);
+    }
   },
 
   [ACTIONS.LIMPAR_PROGRESSO] () {
