@@ -102,14 +102,6 @@ export default {
     localStorage.removeItem('progresso');
   },
 
-  [ACTIONS.OPEN_MODAL] (context, payload) {
-    const { modal_title } = payload;
-    context.commit(MUTATIONS.DEFINIR_MODAL, {
-      show_modal: true,
-      modal_title,
-    });
-  },
-
   [ACTIONS.CLOSE_MODAL] (context) {
     context.commit(MUTATIONS.DEFINIR_MODAL, {
       show_modal: false,
