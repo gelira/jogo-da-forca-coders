@@ -313,3 +313,11 @@ main > div {
   cursor: pointer;
   box-shadow: 0 4px 4px 0 rgba(0,0,0,.3);
 }
+
+.btn-acerto {
+  background-color: #56ff56;
+}
+
+.btn-erro {
+  background-color: #ff8a8a;
+}

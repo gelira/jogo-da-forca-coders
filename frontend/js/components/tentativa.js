@@ -20,23 +20,14 @@ export default class Tentativa extends Component {
     this.renderTeclado();
   }
 
-  tentar(button) {
+  tentar(letra) {
     const { vidas, letras_restantes } = this.store.state;
     if (vidas <= 0 || letras_restantes <= 0) {
       return;
     }
-
-    const letra = button.innerHTML.trim().toUpperCase();
     
     if (letra.length === 1 && this.alfabeto.includes(letra)) {
-      if(this.store.dispatch(ACTIONS.TENTATIVA, { letra })) {
-        document.getElementById(button.id).setAttribute("style", "background-color: #56ff56;");
-        document.getElementById(button.id).setAttribute("disabled", "disabled");
-      } else {
-        document.getElementById(button.id).setAttribute("style", "background-color: #ff8a8a");
-        document.getElementById(button.id).setAttribute("disabled", "disabled");
-      }
-        
+      this.store.dispatch(ACTIONS.TENTATIVA, { letra });
     } 
 
     this.elementLetraTentativa.value = '';
@@ -93,8 +84,26 @@ export default class Tentativa extends Component {
       this.elementTeclado.appendChild(btn);
 
       btn.addEventListener('click', () => {
-        console.log(btn.dataset.letra);
+        this.tentar(btn.dataset.letra);
       });
+    }
+  }
+
+  updateTeclado() {
+    const { tentativas } = this.store.state;
+    
+    for (let i = 0; i < this.alfabeto.length; i ++) {
+      const letra = this.alfabeto[i];
+
+      if (!tentativas.hasOwnProperty(letra)) {
+        continue;
+      }
+
+      const tentativa = tentativas[letra];
+      const btn = document.querySelector(`#letra${letra}`);
+      
+      btn.classList.add(tentativa ? 'btn-acerto' : 'btn-erro');
+      btn.disabled = true;
     }
   }
 
@@ -108,5 +117,6 @@ export default class Tentativa extends Component {
 
     this.showContainer();
     this.renderVidas();
+    this.updateTeclado();
   }
 }
