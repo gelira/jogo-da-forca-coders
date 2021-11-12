@@ -190,6 +190,10 @@ p, #tema, label {
     box-shadow: 0 5px 10px rgb(109, 109, 109,0.2);
 }
 
+#vidas {
+  width: 180px;
+}
+
 .vida-item {
   width: 50px;
   margin-left: 10px;
@@ -209,9 +213,8 @@ p, #tema, label {
   #palavra-masked {
     flex-wrap: wrap;
   }
-
-
   }
+  
 @media (max-width: 800px) {
   html {
     display: table;
