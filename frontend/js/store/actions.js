@@ -3,8 +3,12 @@ import { ACTIONS, MUTATIONS } from './types.js';
 export default {
   async [ACTIONS.FETCH_PALAVRA] (context) {
     const response = await fetch('http://localhost:3000/palavra')
-    const data = await response.json();
-    context.commit(MUTATIONS.SET_PALAVRA, data);
+    const { city, country } = await response.json();
+    
+    context.commit(MUTATIONS.SET_PALAVRA, {
+      dica: city,
+      palavra: country,
+    });
   },
 
   [ACTIONS.TENTATIVA] (context, payload) {
