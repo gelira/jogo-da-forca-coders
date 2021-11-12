@@ -102,4 +102,9 @@ export default {
     state.palavra_masked = state.palavra_masked.map(i => ({ ...i, masked: false }));
     state.letras_restantes = 0;
   },
+
+  [MUTATIONS.DEFINIR_NOME] (state, payload) {
+    const { nome } = payload;
+    state.nome = nome;
+  },
 };
