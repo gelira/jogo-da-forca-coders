@@ -125,6 +125,7 @@ export default {
       dica,
       tempo,
       palavra_masked,
+      palavra_cleaned,
       letras_restantes,
       nome,
       tentativas,
@@ -135,6 +136,7 @@ export default {
     state.dica = dica;
     state.tempo = tempo;
     state.palavra_masked = palavra_masked;
+    state.palavra_cleaned = palavra_cleaned;
     state.letras_restantes = letras_restantes;
     state.nome = nome;
     state.tentativas = tentativas;
